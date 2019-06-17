@@ -1,0 +1,72 @@
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+	font-family: -apple-system, BlinkMacSystemFont, "Oxygen", "Ubuntu", sans-serif;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+a, h1, h2, p {
+	color: #fff;  
+	text-decoration: none;
+}
+
+header {
+	height: 80px;
+	width: 100%;
+	box-shadow: 4px 4px 16px #000;
+	background: #5DBCD2;
+}
+
+header nav {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin: 10px;
+}
+
+header nav .logo {
+	font-size: 34px;
+	font-weight: bold;
+}
+
+header nav .nav-link {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+header nav .nav-link a {
+	padding: 10px;
+}
+header nav .nav-link a:hover, header nav .nav-link a:visited, header nav .nav-link a:active {
+	text-decoration: underline;
+}
+
+@media only screen and (min-width: 768px){
+
+	header nav {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	header nav .logo {
+		padding-top: 10px;
+	}
+
+	header nav .nav-link {
+		padding-top: 15px;
+	}
+}
+
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 60px;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #5DBCD2;
+	box-shadow: 4px 4px 16px #000;
+}
