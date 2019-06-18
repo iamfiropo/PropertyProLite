@@ -64,12 +64,19 @@ main {
       main {
           flex-direction: row;
       }
+
+      main .signup {
+        background: url('../../assets/images/man-3030653_1920.jpg');
+    }
   
-      main .banner {
+      main .signin {
           background: url('../../assets/images/login.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          display: inline-block;
+      }
+
+      main .banner {
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: inline-block;
       }
   
       main .banner h2 {

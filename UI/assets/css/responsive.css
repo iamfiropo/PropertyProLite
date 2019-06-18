@@ -5,7 +5,7 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Oxygen", "Ubuntu", sans-serif;
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
+	overflow: auto;
 }
 
 a, h1, h2, p {
