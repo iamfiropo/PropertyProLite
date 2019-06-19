@@ -4,31 +4,54 @@
   flex: 1;
 }
 
+.container section {
+  display: flex;
+  justify-content: center;
+}
+
+.container .search-bar {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  margin-top: 30px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  width: 40%;
+  padding: 20px 20px 70px;
+  background: #ccc;
+}
+
+.container .search-bar select {
+  outline: 0;
+  padding: 5px 10px;  
+}
+
 .container h1 {
   color: #000;
   text-align: center;
 }
 
-.container div {
+.container .property-card {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  box-sizing: border-box;
 }
 
-.container div .card {
+.container .property-card .card {
   border-radius: 1px solid #bbb;
   transition: all 0.3s linear;
 }
 
-.container div .card:hover {
+.container .property-card .card:hover {
   box-shadow: rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
   transform: rotate(-1deg);
 }
 
-.container div figure img {
+.container .property-card figure img {
   width: 100%;
 }
 
-.container div figure p {
+.container .property-card figure p {
   color: #000;
 }
