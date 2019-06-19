@@ -1,3 +1,6 @@
+/*
+The body, header, footer and general styling of the application
+*/
 body {
 	margin: 0;
 	padding: 0;
@@ -24,7 +27,7 @@ header nav {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	margin: 10px;
+	margin: 10px 40px;
 }
 
 header nav .logo {

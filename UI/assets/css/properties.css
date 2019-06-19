@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.container h1 {
+  color: #000;
+  text-align: center;
+}
+
+.container div {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.container div .card {
+  border-radius: 1px solid #bbb;
+  transition: all 0.3s linear;
+}
+
+.container div .card:hover {
+  box-shadow: rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+  transform: rotate(-1deg);
+}
+
+.container div figure img {
+  width: 100%;
+}
+
+.container div figure p {
+  color: #000;
+}

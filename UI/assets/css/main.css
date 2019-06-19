@@ -7,6 +7,9 @@ input[type="submit"] {
     text-shadow: 8px 8px 16px #111;
 }
 
+/*
+SIGN IN PAGE
+*/
 main {
     display: flex;
     flex-direction: column;
@@ -64,10 +67,6 @@ main {
       main {
           flex-direction: row;
       }
-
-      main .signup {
-        background: url('../../assets/images/man-3030653_1920.jpg');
-    }
   
       main .signin {
           background: url('../../assets/images/login.jpg');
@@ -87,3 +86,13 @@ main {
           margin-top: 100px;
       }
   }
+
+  /*
+SIGN UP PAGE
+*/
+
+@media only screen and (min-width: 768px) {
+    main .signup {
+      background: url('../../assets/images/man-3030653_1920.jpg');
+  }
+}
