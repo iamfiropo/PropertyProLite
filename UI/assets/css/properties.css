@@ -17,12 +17,12 @@
 .container .search-bar {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   margin-bottom: 15px;
   border: 10px solid #000;
-  border-radius: 8px;
-  width: 40%;
-  padding: 20px 20px 70px;
+  border-radius: 20px;
+  width: 60%;
+  padding: 20px 20px 60px;
   background: #ccc;
 }
 
@@ -36,6 +36,15 @@
   text-align: center;
 }
 
+.container .search-bar .search-btn {
+  background: #5DBCD2;
+  outline: 0;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px;
+}
+
 .container .property-card {
   display: grid;
   grid-gap: 20px;
@@ -47,11 +56,25 @@
   border-radius: 1px solid #bbb;
   transition: all 0.3s linear;
   cursor: pointer;
+  position: relative;
 }
 
 .container .property-card .card:hover {
   box-shadow: rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
   transform: rotate(-1deg);
+}
+
+.container .property-card .card .property-status {
+  position: absolute;
+  top: 30px;
+  right: -10px;
+  font-size: 25px;
+  font-weight: bold;
+  transform: rotate(45deg);
+}
+
+.container .property-card figure figcaption {
+  text-align: center;
 }
 
 .container .property-card figure img {

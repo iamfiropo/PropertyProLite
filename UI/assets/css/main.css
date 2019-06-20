@@ -7,6 +7,10 @@ input[type="submit"] {
     text-shadow: 8px 8px 16px #111;
 }
 
+/* input[type="checkbox"] {
+    padding: 50px;
+} */
+
 /*
 SIGN IN PAGE
 */
@@ -90,6 +94,10 @@ main {
   /*
 SIGN UP PAGE
 */
+/* main .signup-form {
+    display: grid;
+    flex-direction: row;
+} */
 
 @media only screen and (min-width: 768px) {
     main .signup {
