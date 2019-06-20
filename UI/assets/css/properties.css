@@ -6,15 +6,20 @@
 
 .container section {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  text-align: center;
+  background: #5DBCD2;
+  border-top: 5px solid #fff;
 }
 
 .container .search-bar {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  margin-top: 30px;
-  border: 1px solid #bbb;
+  margin-bottom: 15px;
+  border: 10px solid #000;
   border-radius: 8px;
   width: 40%;
   padding: 20px 20px 70px;
@@ -26,7 +31,7 @@
   padding: 5px 10px;  
 }
 
-.container h1 {
+.container h2 {
   color: #000;
   text-align: center;
 }
@@ -41,6 +46,7 @@
 .container .property-card .card {
   border-radius: 1px solid #bbb;
   transition: all 0.3s linear;
+  cursor: pointer;
 }
 
 .container .property-card .card:hover {
