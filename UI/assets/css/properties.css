@@ -22,7 +22,7 @@
   border: 10px solid #000;
   border-radius: 20px;
   width: 60%;
-  padding: 20px 20px 60px;
+  padding: 20px;
   background: #ccc;
 }
 
@@ -43,6 +43,14 @@
   font-weight: bold;
   cursor: pointer;
   padding: 5px;
+}
+
+.container .search-bar .delete-btn {
+  padding: 5px;
+  background: #5DBCD2;
+  outline: 0;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .container .property-card {
@@ -71,6 +79,10 @@
   font-size: 25px;
   font-weight: bold;
   transform: rotate(45deg);
+}
+
+.container .property-card .card .delete-check {
+  position: absolute;
 }
 
 .container .property-card figure figcaption {
