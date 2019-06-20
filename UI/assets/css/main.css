@@ -94,10 +94,6 @@ main {
   /*
 SIGN UP PAGE
 */
-/* main .signup-form {
-    display: grid;
-    flex-direction: row;
-} */
 
 @media only screen and (min-width: 768px) {
     main .signup {
