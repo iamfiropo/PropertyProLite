@@ -21,6 +21,7 @@
     </nav>
   </header> 
   <main class="container">   
+
     <section>
       <h2>Search for the type of properties you want here:</h2>
       <div class="search-bar">
@@ -34,11 +35,14 @@
           <option value="Mini Flat">Mini Flat</option>
           <option value="Duplex">Duplex</option>
         </select>
-        <input type="text" placeholder="Enter an area or location">
-        <button class="search-btn">Search</button>
+        <input class="search-input" type="text" placeholder="Enter an area or location">
+        <button id="post-property-btn" class="post-property-btn">Post Property</button>
         <button class="delete-btn">Delete</button>
+        <button class="search-btn">Search</button>
+        <!-- <button class="search-btn">Search</button> -->
       </div>
     </section>
+
     <div class="property-card">   
       <figure class="card">
         <img src="../../assets/images/exterior.jpg" alt="Trulli">
@@ -113,9 +117,39 @@
         </figcaption>
       </figure>
     </div>
+
+    <div class="modal">
+        <span class="close" title="Close Modal">&times;</span>
+        <form class="modal-content">
+          <div class="wrapper">
+            <h1>Post property advert</h1>
+            <hr>
+            <label for="price"><strong>Price</strong></label>
+            <input type="text" placeholder="Enter Price" class="post-input" id="price" name="price" required>
+            <label for="state"><strong>State</strong></label>
+            <input type="text" placeholder="Enter State" class="post-input" id="state" name="state" required>
+            <label for="city"><strong>City</strong></label>
+            <input type="text" placeholder="Enter City" class="post-input" id="city" name="city" required>
+            <label for="address"><strong>Address</strong></label>
+            <input type="text" placeholder="Enter Address" class="post-input" id="address" name="address" required>
+            <label for="type"><strong>Property Type</strong></label>
+            <input type="text" placeholder="Enter Property Type" class="post-input" id="type" name="type" required>
+            <div><label for="date-created"><strong>Post Date:</strong></label>
+            <input type="date" id="date-created" class="post-input"></div>
+            <span><label for="image-url"><strong>Property Image:</strong></label></span>
+            <input type="file" class="post-input" id="image-url" name="image-url" required>
+            <button type="submit" class="post">Post Property</button>
+          </div>
+        </form>
+      </div>  
+
   </main>
+
   <footer>
     <p>&copy; 2019 PropertyProLite - ADC Cycle 46</p>
-  </footer>    
+  </footer>
+
+  
+  <script src="../../assets/js/script.js"></script>
 </body>
 </html>
