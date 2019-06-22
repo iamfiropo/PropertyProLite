@@ -36,10 +36,10 @@
           <option value="Duplex">Duplex</option>
         </select>
         <input class="search-input" type="text" placeholder="Enter an area or location">
-        <button id="post-property-btn" class="post-property-btn">Post Property</button>
-        <button class="delete-btn">Delete</button>
         <button class="search-btn">Search</button>
-        <!-- <button class="search-btn">Search</button> -->
+        <button class="delete-btn">Delete</button>
+        <button id="post-property-btn" class="post-property-btn">Post</button>
+        <button id="update-property-btn" class="update-property-btn">Update</button>
       </div>
     </section>
 
@@ -105,7 +105,7 @@
         </figcaption>
       </figure>
       <figure class="card">
-        <img src="../../assets/images/luxury-home-2409518_640.jpg" alt="Trulli">
+        <img src="../../assets/images/luxury-home-2409518_1920.jpg" alt="Trulli">
         <aside>
           <strong class="property-status">Available</strong> 
           <input class="delete-check" type="checkbox">
@@ -116,29 +116,32 @@
           <p>&#x20A6;6000,000,000</p>
         </figcaption>
       </figure>
-    </div>
+    </div>    
 
     <div class="modal">
         <span class="close" title="Close Modal">&times;</span>
         <form class="modal-content">
           <div class="wrapper">
-            <h1>Post property advert</h1>
+            <h1 class="post-modal">Post property advert</h1>
+            <h1 class="update-modal">Update property advert</h1>
             <hr>
+            <input type="text" readonly value="0001" class="property-input" id="id" name="ID">
             <label for="price"><strong>Price</strong></label>
-            <input type="text" placeholder="Enter Price" class="post-input" id="price" name="price" required>
+            <input type="text" placeholder="Enter Price" class="property-input" id="price" name="price" required>
             <label for="state"><strong>State</strong></label>
-            <input type="text" placeholder="Enter State" class="post-input" id="state" name="state" required>
+            <input type="text" placeholder="Enter State" class="property-input" id="state" name="state" required>
             <label for="city"><strong>City</strong></label>
-            <input type="text" placeholder="Enter City" class="post-input" id="city" name="city" required>
+            <input type="text" placeholder="Enter City" class="property-input" id="city" name="city" required>
             <label for="address"><strong>Address</strong></label>
-            <input type="text" placeholder="Enter Address" class="post-input" id="address" name="address" required>
+            <input type="text" placeholder="Enter Address" class="property-input" id="address" name="address" required>
             <label for="type"><strong>Property Type</strong></label>
-            <input type="text" placeholder="Enter Property Type" class="post-input" id="type" name="type" required>
+            <input type="text" placeholder="Enter Property Type" class="property-input" id="type" name="type" required>
             <div><label for="date-created"><strong>Post Date:</strong></label>
-            <input type="date" id="date-created" class="post-input"></div>
+            <input type="date" id="date-created" class="property-input"></div>
             <span><label for="image-url"><strong>Property Image:</strong></label></span>
-            <input type="file" class="post-input" id="image-url" name="image-url" required>
-            <button type="submit" class="post">Post Property</button>
+            <input type="file" class="property-input" id="image-url" name="image-url" required>
+            <button type="submit" class="box post post-modal">Post Property</button>
+            <button type="submit" class="box update update-modal">Update Property</button>
           </div>
         </form>
       </div>  

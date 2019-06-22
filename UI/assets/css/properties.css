@@ -2,6 +2,14 @@
   box-sizing: border-box
 }
 
+header {
+	background: #fff;
+}
+
+header nav a {
+	color: #000;
+}
+
 button {
   outline: 0;
   font-size: 20px;
@@ -41,6 +49,8 @@ input {
   justify-content: center;
   text-align: center;
   background: #5DBCD2;
+  background-repeat: no-repeat;
+	background-size: cover;
   border-top: 5px solid #fff;
 }
 
@@ -51,7 +61,7 @@ input {
   margin-bottom: 15px;
   border: 10px solid #000;
   border-radius: 20px;
-  width: 60%;
+  width: 65%;
   padding: 20px;
   background: #ccc;
 }
@@ -110,7 +120,10 @@ input {
   color: #000;
 }
 
-.container .post-input[type=text] {
+/*
+  Post and Update property styling
+*/
+.container .property-input[type=text] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -124,7 +137,7 @@ input {
   outline: none;
 }
 
-.container .post {
+.container .box {
   background-color: #5DBCD2;
   color: white;
   padding: 14px 20px;
@@ -136,10 +149,13 @@ input {
   opacity: 0.9;
 }
 
-.container .post:hover {
+.container .box:hover {
   opacity: 1;
 }
 
+/*
+  Modal styling
+*/
 .container .wrapper {
   padding: 16px;
 }
@@ -155,6 +171,18 @@ input {
   overflow: auto;
   background-color: #474e5d;
   padding-top: 50px;
+}
+
+.container .post-modal {
+  display: none;
+}
+
+.container .update-modal {
+  display: none;
+}
+
+.container #id {
+  display: none;
 }
 
 .container .modal-content {
@@ -186,9 +214,9 @@ input {
 
 @media only screen and (min-width: 768px){
 
-  .container .search-bar .search-input {
+  /* .container .search-bar .search-input {
     grid-column: 3/span 2;
-  }
+  } */
 
   .container .modal-content {
       width: 40%;
