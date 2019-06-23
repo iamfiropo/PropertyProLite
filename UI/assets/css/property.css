@@ -1,15 +1,3 @@
-* {
-  box-sizing: border-box
-}
-
-header {
-	background: #fff;
-}
-
-header nav a {
-	color: #000;
-}
-
 button {
   outline: 0;
   font-size: 20px;
@@ -17,12 +5,6 @@ button {
   cursor: pointer;
   padding: 5px;
   background: #888;
-  opacity: 0.9;
-  color: #fff;
-}
-
-button:hover {
-  opacity: 1;
 }
 
 button:nth-child(even){
@@ -51,7 +33,6 @@ input {
   background: #5DBCD2;
   background-repeat: no-repeat;
 	background-size: cover;
-  border-top: 5px solid #fff;
 }
 
 .container .search-bar {
@@ -68,7 +49,15 @@ input {
 
 .container .search-bar select {
   outline: 0;
-  padding: 5px 10px;  
+  padding: 5px 10px; 
+  height: 40px; 
+  border-radius: 0;
+  appearance: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: #444;
+  width: 100%;
+  max-width: 100%;
 }
 
 .container h2, .container h1 {
@@ -123,102 +112,3 @@ input {
 /*
   Post and Update property styling
 */
-.container .property-input[type=text] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-.container .post-input[type=text]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-.container .box {
-  background-color: #5DBCD2;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-  opacity: 0.9;
-}
-
-.container .box:hover {
-  opacity: 1;
-}
-
-/*
-  Modal styling
-*/
-.container .wrapper {
-  padding: 16px;
-}
-
-.container .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: #474e5d;
-  padding-top: 50px;
-}
-
-.container .post-modal {
-  display: none;
-}
-
-.container .update-modal {
-  display: none;
-}
-
-.container #id {
-  display: none;
-}
-
-.container .modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto;
-  border: 1px solid #888;
-  width: 80%; 
-}
-
-.container hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-.container .close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #f1f1f1;
-}
-
-.container .close:hover,
-.container .close:focus {
-  color: #f44336;
-  cursor: pointer;
-}
-
-@media only screen and (min-width: 768px){
-
-  /* .container .search-bar .search-input {
-    grid-column: 3/span 2;
-  } */
-
-  .container .modal-content {
-      width: 40%;
-  }
-}

@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Properties | PropertyProLite</title>
-  <link rel="stylesheet" href="../../assets/css/responsive.css">
-  <link rel="stylesheet" href="../../assets/css/properties.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/property.css">
 </head>
-<body>
+<body class="body">
   <header>
+      <img class="harmburger" src="../assets/images/menu.svg" alt="toggle">      
     <nav>
-      <a href="../index.html" class="logo">PropertyProLite</a>
+      <a href="./index.html" class="logo">PropertyProLite</a>
       <div class="nav-link">
-        <a href="../index.html" class="home">Home</a>
-        <a href="./properties.html" class="properties">Properties</a>
-        <a href="./signup.html" class="signin">Sign Up</a>
-        <a href="./signin.html" class="signin">Sign In</a>
+        <a href="./index.html" class="home">Home</a>
+        <a href="./index.html#.signup" id="./index.html#.signup}">Sign Up</a>
+        <a href="./index.html#.signin" id="./index.html#.signin">Sign In</a>
       </div>
     </nav>
   </header> 
-  <main class="container">   
 
+  <main class="container">   
     <section>
       <h2>Search for the type of properties you want here:</h2>
       <div class="search-bar">
@@ -45,7 +45,7 @@
 
     <div class="property-card">   
       <figure class="card">
-        <img src="../../assets/images/exterior.jpg" alt="Trulli">
+        <img src="../assets/images/exterior.jpg" alt="Trulli">
         <aside>
           <strong class="property-status">Sold Out</strong> 
           <input class="delete-check" type="checkbox">
@@ -57,7 +57,7 @@
         </figcaption>
       </figure>
       <figure class="card">
-        <img src="../../assets/images/new-home.jpg" alt="Trulli">
+        <img src="../assets/images/new-home.jpg" alt="Trulli">
         <aside>
           <strong class="property-status">Available</strong> 
           <input class="delete-check" type="checkbox">
@@ -69,7 +69,7 @@
         </figcaption>
       </figure>
       <figure class="card">
-        <img src="../../assets/images/house.jpg" alt="Trulli">
+        <img src="../assets/images/luxury-home-2409518_1920.jpg" alt="Trulli">
         <aside>
           <strong class="property-status">Sold Out</strong> 
           <input class="delete-check" type="checkbox">
@@ -81,7 +81,7 @@
         </figcaption>
       </figure>
       <figure class="card">
-        <img src="../../assets/images/man-3030653_1920.jpg" alt="Trulli">
+        <img src="../assets/images/house.jpg" alt="Trulli">
         <aside>
           <strong class="property-status">Available</strong> 
           <input class="delete-check" type="checkbox">
@@ -93,7 +93,7 @@
         </figcaption>
       </figure>
       <figure class="card">
-        <img src="../../assets/images/house-1946371_640.jpg" alt="Trulli">
+        <img src="../assets/images/house-3288435_1920.jpg" alt="Trulli">
         <aside>
           <strong class="property-status">Sold Out</strong> 
           <input class="delete-check" type="checkbox">
@@ -105,7 +105,7 @@
         </figcaption>
       </figure>
       <figure class="card">
-        <img src="../../assets/images/luxury-home-2409518_1920.jpg" alt="Trulli">
+        <img src="../assets/images/lawn-3248159_1920.jpg" alt="Trulli">
         <aside>
           <strong class="property-status">Available</strong> 
           <input class="delete-check" type="checkbox">
@@ -125,21 +125,21 @@
             <h1 class="post-modal">Post property advert</h1>
             <h1 class="update-modal">Update property advert</h1>
             <hr>
-            <input type="text" readonly value="0001" class="property-input" id="id" name="ID">
+            <input type="text" readonly value="0001" class="modal-input" id="id" name="ID">
             <label for="price"><strong>Price</strong></label>
-            <input type="text" placeholder="Enter Price" class="property-input" id="price" name="price" required>
+            <input type="text" placeholder="Enter Price" class="modal-input" id="price" name="price" required>
             <label for="state"><strong>State</strong></label>
-            <input type="text" placeholder="Enter State" class="property-input" id="state" name="state" required>
+            <input type="text" placeholder="Enter State" class="modal-input" id="state" name="state" required>
             <label for="city"><strong>City</strong></label>
-            <input type="text" placeholder="Enter City" class="property-input" id="city" name="city" required>
+            <input type="text" placeholder="Enter City" class="modal-input" id="city" name="city" required>
             <label for="address"><strong>Address</strong></label>
-            <input type="text" placeholder="Enter Address" class="property-input" id="address" name="address" required>
+            <input type="text" placeholder="Enter Address" class="modal-input" id="address" name="address" required>
             <label for="type"><strong>Property Type</strong></label>
-            <input type="text" placeholder="Enter Property Type" class="property-input" id="type" name="type" required>
+            <input type="text" placeholder="Enter Property Type" class="modal-input" id="type" name="type" required>
             <div><label for="date-created"><strong>Post Date:</strong></label>
-            <input type="date" id="date-created" class="property-input"></div>
+            <input type="date" id="date-created" class="modal-input"></div>
             <span><label for="image-url"><strong>Property Image:</strong></label></span>
-            <input type="file" class="property-input" id="image-url" name="image-url" required>
+            <input type="file" class="modal-input" id="image-url" name="image-url" required>
             <button type="submit" class="box post post-modal">Post Property</button>
             <button type="submit" class="box update update-modal">Update Property</button>
           </div>
@@ -153,6 +153,7 @@
   </footer>
 
   
-  <script src="../../assets/js/script.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/property.js"></script>
 </body>
 </html>
