@@ -47,28 +47,39 @@ header nav .logo {
 	padding-left: 20px;
 }
 
-header nav .nav-link {
+header nav .navlink {
   display: none;
-	flex-direction: column;
+  flex-direction: column;
+  margin-left: 30px;
 }
 
-header nav .nav-link a {
+header nav .navlink a {
 	margin: 8px;
-	text-align: center;
-	font-size: 20px;
-	font-weight: bold;
+	/* text-align: center; */
+  font-size: 20px;
+  font-weight: bold;
 }
 
-header nav .nav-link a:hover, header nav .nav-link a:visited, header nav .nav-link a:active {
+header nav .navlink a:hover, header nav .navlink a:visited, header nav .navlink a:active {
 	text-decoration: underline;
 	cursor: pointer;
 }
 
 header .harmburger {
+  display: initial;
   position: absolute;
   top: 20px;
   right: 15px;
-	cursor: pointer;
+  cursor: pointer;
+}
+
+header .harmburger:hover, header .harmburger:visited, header .harmburger:hover:active {
+  background-color: #fff;
+  /* color: black; */
+}
+
+.toggleshow {
+  display: flex;
 }
 
 @media only screen and (min-width: 768px){
@@ -83,7 +94,7 @@ header .harmburger {
 		margin: 15px 50px;
 	}
 
-	header nav .nav-link {
+	header nav .navlink {
     display: flex;
     flex-direction: row;
     background: none;
@@ -125,7 +136,7 @@ footer {
   background-color: #5DBCD2;
   color: white;
   padding: 14px 20px;
-  margin: 25px 0;
+  margin: 20px 0;
   border: none;
   cursor: pointer;
   width: 100%;
