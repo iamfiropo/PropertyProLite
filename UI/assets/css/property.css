@@ -11,13 +11,6 @@ button:nth-child(even){
   background: #5DBCD2;
 }
 
-input {
-  padding: 8px;
-  outline: 0;
-  font-size: 15px;
-  border: none;
-}
-
 .container {
   display: flex;
   flex-direction: column;
