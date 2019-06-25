@@ -20,17 +20,14 @@ main section {
 	width: 100%;
 }
 
-main section .vertical-center {
-	text-shadow: 8px 8px 32px #000;
-}
-
 main section .vertical-center a {
-	font-size: 20px;
+	font-size: 40px;
 	font-weight: bold;
 	border: 5px solid #5DBCD2;
-  border-radius: 20px;
+  border-radius: 40px;
   padding: 5px;
-  color: #fff;
+	color: #fff;	
+  transition: 0.3s ease;
 }
 
 main section .vertical-center hr {

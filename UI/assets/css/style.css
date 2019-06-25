@@ -16,6 +16,17 @@ body {
 	overflow: auto;
 }
 
+input {
+  padding: 8px;
+  outline: 0;
+  font-size: 15px;
+  border: none;
+}
+
+label {
+  font-size: 20px;
+}
+
 a {
 	text-decoration: none;
 }
@@ -55,7 +66,6 @@ header nav .navlink {
 
 header nav .navlink a {
 	margin: 8px;
-	/* text-align: center; */
   font-size: 20px;
   font-weight: bold;
 }
@@ -123,7 +133,6 @@ footer {
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
-  border: none;
   background: #f1f1f1;
 }
 
