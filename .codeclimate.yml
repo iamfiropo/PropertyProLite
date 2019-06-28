@@ -1,0 +1,19 @@
+version: "2"
+plugins:
+  eslint:
+    enabled: true
+    extensions:
+    - .json
+    checks:
+      complexity:
+        enabled: false
+    config:
+      ignore_warnings: true
+exclude_patterns:
+  - "**/node_modules/"
+  - "config/"
+  - ".nyc_output"
+  - "coverage"
+  - "**/test/"
+  - "UI"
+  - "**/api-docs"
