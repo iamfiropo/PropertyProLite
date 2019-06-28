@@ -1,0 +1,24 @@
+{
+  "extends": "airbnb-base",
+  "root": true, 
+  "globals": {
+    "Promise": "off"
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": [2, {"devDependencies": ["**/*.js"]}],
+    "no-param-reassign": 0,
+    "camelcase": 0,
+    "no-plusplus": 0,
+    "mocha/no-exclusive-tests": 2
+    },
+  "env": {
+  "browser": true,
+  "es6": true,
+  "mocha": true,
+  "node": true
+  },
+  "plugins": [
+    "import",
+    "mocha"
+  ]  
+}

@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+    - "node_modules"
+script:
+  - babel-node server.js &
+  - npm run test
+branches:
+  only:
+  - develop
+after_success: coveralls
