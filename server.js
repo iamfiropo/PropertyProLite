@@ -1,10 +1,12 @@
 import express from 'express';
 import logger from 'morgan';
 import Debug from 'debug';
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
+import 'regenerator-runtime/runtime';
 import './server/config/cloudinary';
+import userRoute from './server/routes/user.route';
 
-dotenv.config();
+config();
 
 const app = express();
 
@@ -15,8 +17,8 @@ const port = process.env.PORT;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => res.status(200)
-  .send({ message: 'Welcome to PropertyProLite API' }));
+const router = express.Router();
+app.use('/api/v1', userRoute(logger, router));
 
 app.listen(port, () => debug(`Server listening on port ${port}`));
 
