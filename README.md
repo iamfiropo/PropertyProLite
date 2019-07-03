@@ -1,5 +1,8 @@
 # PropertyProLite
 [![Build Status](https://travis-ci.com/Johnpeace/PropertyProLite.svg?branch=develop)](https://travis-ci.com/Johnpeace/PropertyProLite)
+[![Coverage Status](https://coveralls.io/repos/github/Johnpeace/PropertyProLite/badge.svg?branch=develop)](https://coveralls.io/github/Johnpeace/PropertyProLite?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9502704d31e0717ede11/maintainability)](https://codeclimate.com/github/Johnpeace/PropertyProLite/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/9502704d31e0717ede11/test_coverage)](https://codeclimate.com/github/Johnpeace/PropertyProLite/test_coverage)
 
 Property Pro Lite is a platform where people can create and/or search properties for sale or rent
 
