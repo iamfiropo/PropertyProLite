@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
-import UserService from '../services/user.service';
 import Response from '../utils/helpers/response';
+import Id from '../utils/helpers/id';
+import Users from '../db/users';
 import UserModel from '../models/user.model';
 
 class userController {
@@ -9,9 +10,10 @@ class userController {
       const newUser = req.body;
       const hashedPassword = bcrypt.hashSync(newUser.password, bcrypt.genSaltSync(10), null);
       newUser.password = hashedPassword;
-      let user = UserService.addUserID(newUser);
-      user = new UserModel({ ...user });
-      if (!user.signUp()) {
+      const newId = Id(Users);
+      newUser.id = newId;
+      const user = new UserModel({ ...newUser });
+      if (!await user.signUp()) {
         return Response.handleError(409, 'Email already exist', res);
       }
       return Response.handleSuccess(201, 'Successfully Created', user.result, res);
@@ -26,7 +28,7 @@ class userController {
       const signInUser = new UserModel(email);
       if (signInUser.signIn()) {
         if (bcrypt.compareSync(password, signInUser.result.password)) {
-          return Response.handleSuccess(200, 'Sign in successfully', signInUser.result.password, res);
+          return Response.handleSuccess(200, 'User sign in successfully', signInUser.result.password, res);
         }
         return Response.handleError(401, 'Wrong password. Please try again', res);
       }

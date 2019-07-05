@@ -4,7 +4,7 @@ import Debug from 'debug';
 import { config } from 'dotenv';
 import 'regenerator-runtime/runtime';
 import './server/config/cloudinary';
-import userRoute from './server/routes/user.route';
+import Route from './server/routes/route';
 
 config();
 
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const router = express.Router();
-app.use('/api/v1', userRoute(logger, router));
+app.use('/api/v1', Route(logger, router));
 
 app.listen(port, () => debug(`Server listening on port ${port}`));
 
