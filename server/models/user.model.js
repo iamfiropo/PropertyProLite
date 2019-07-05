@@ -1,5 +1,6 @@
 import Model from './model';
 import Users from '../db/users';
+import Response from '../utils/helpers/response';
 
 class User extends Model {
   async signUp() {
@@ -7,13 +8,17 @@ class User extends Model {
      * Check if email already exist before saving into the database
      * If it does, return false
      */
-    const newUser = this.payload;
-    const email = Users.some(user => user.email === newUser.email);
-    if (!email) {
-      await this.save(Users, newUser);
-      return true;
+    try {
+      const newUser = this.payload;
+      const email = Users.some(user => user.email === newUser.email);
+      if (!email) {
+        await this.save(Users, newUser);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      return Response.handleError(500, error.toString());
     }
-    return false;
   }
 
   async signIn() {
