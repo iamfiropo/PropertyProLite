@@ -1,5 +1,5 @@
 import Response from '../utils/helpers/response';
-import InputCheck from '../utils/helpers/inputcheck';
+import InputCheck from '../utils/helpers/input.check';
 
 class UserValidation {
   static async signUp(req, res, next) {
@@ -27,8 +27,13 @@ class UserValidation {
   static async signIn(req, res, next) {
     try {
       const { email, password } = req.body;
-      if (!email) return Response.handleError(400, 'Email is required', res);
-      if (!password) return Response.handleError(400, 'Password is required', res);
+      if (!email || !password) return Response.handleError(400, 'Please fill all the required fields', res);
+      if (await InputCheck.emailCheck(email)) return Response.handleError(400, 'Enter valid email', res);
+      if (await InputCheck.passwordCheck(password)) {
+        return Response.handleError(400,
+          'Enter valid password',
+          res);
+      }
       next();
     } catch (error) {
       return Response.handleError(500, error.toString(), res);

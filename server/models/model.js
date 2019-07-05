@@ -1,5 +1,5 @@
 class Model {
-  constructor(payload = null) {
+  constructor(payload) {
     this.payload = payload;
     this.result = null;
   }

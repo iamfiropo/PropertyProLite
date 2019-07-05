@@ -40,5 +40,13 @@ class InputCheck {
     }
     return false;
   }
+
+  static floatCheck(float) {
+    check = /^[+-]?\d+(\.\d+)?$/;
+    if (!check.test(float)) {
+      return true;
+    }
+    return false;
+  }
 }
 export default InputCheck;
