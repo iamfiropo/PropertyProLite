@@ -47,13 +47,15 @@ etc
 
  > PATCH https://propertyprolite.herokuapp.com/api/v1/property/1 - Update property data
 
- > PATCH https://propertyprolite.herokuapp.com/api/v1/property/1/sold - Mark a property as sold so users know it’s no longer available
+ > PATCH https://propertyprolite.herokuapp.com/api/v1/property/1/sold - Mark a property as sold so      users know it’s no longer available
 
  > DELETE https://propertyprolite.herokuapp.com/api/v1/property/1 - Delete a property advert
 
- > GET https://propertyprolite.herokuapp.com/api/v1/property/1 - Get all property adverts
+ > GET https://propertyprolite.herokuapp.com/api/v1/property - Get all property adverts
 
-> GET https://propertyprolite.herokuapp.com/api/v1/property/1/?type=​duplex - Get all property advertisement offering a specific type of property
+ > GET https://propertyprolite.herokuapp.com/api/v1/property/1/?type=​duplex - Get all property advertisement offering a specific type of property
+
+> GET https://propertyprolite.herokuapp.com/api/v1/property/1 - View a specific property advert
 
 ## Links
  > [Project Homepage](https://johnpeace.github.io/PropertyProLite/UI/pages/index.html)
