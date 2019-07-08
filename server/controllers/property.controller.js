@@ -50,6 +50,17 @@ class PropertyController {
       return Response.handleError(500, error.toString(), res);
     }
   }
+
+  static async deleteProperty(req, res) {
+    try {
+      const propertyId = parseInt(req.params.id, 10);
+      const property = new PropertyModel(propertyId);
+      if (await property.deleteProperty()) return Response.handleDelete(200, property.result, res);
+      return Response.handleError(404, 'Property id not found', res);
+    } catch (error) {
+      return Response.handleError(500, error.toString(), res);
+    }
+  }
 }
 
 export default PropertyController;
