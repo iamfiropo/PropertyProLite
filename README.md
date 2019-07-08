@@ -53,7 +53,7 @@ etc
 
  > GET https://propertyprolite.herokuapp.com/api/v1/property - Get all property adverts
 
- > GET https://propertyprolite.herokuapp.com/api/v1/property/1/?type=​duplex - Get all property advertisement offering a specific type of property
+ > GET https://propertyprolite.herokuapp.com/api/v1/properties - Get all property advertisement offering a specific type of property
 
 > GET https://propertyprolite.herokuapp.com/api/v1/property/1 - View a specific property advert
 

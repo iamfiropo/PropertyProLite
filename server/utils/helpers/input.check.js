@@ -49,4 +49,5 @@ class InputCheck {
     return false;
   }
 }
+
 export default InputCheck;

@@ -16,12 +16,12 @@ describe('Testing signup controller', () => {
         .post(signupUrl)
         .send({
           email: 'test@test.com',
-          firstName: 'patrick',
-          lastName: 'olorunfunmi',
+          first_name: 'patrick',
+          last_name: 'olorunfunmi',
           password: 'password1',
           phoneNumber: '07089898989',
           address: '10, olorunfunmi street, iponri, america',
-          isAdmin: true,
+          is_admin: true,
         })
 
         .end((error, response) => {
@@ -32,8 +32,8 @@ describe('Testing signup controller', () => {
           // expect(response.body.data).to.have.property('token');
           expect(response.body.data).to.have.property('id');
           expect(response.body.data).to.have.property('email');
-          expect(response.body.data).to.have.property('firstName');
-          expect(response.body.data).to.have.property('lastName');
+          expect(response.body.data).to.have.property('first_name');
+          expect(response.body.data).to.have.property('last_name');
           expect(response.body.data).to.have.property('password');
           expect(response.body.data).to.have.property('phoneNumber');
           expect(response.body.data).to.have.property('address');
@@ -50,12 +50,12 @@ describe('Testing signup controller', () => {
         .request(server)
         .post(signupUrl)
         .send({
-          firstName: 'patrick',
-          lastName: 'olorunfunmi',
+          first_name: 'patrick',
+          last_name: 'olorunfunmi',
           password: 'password1',
           phoneNumber: '07089898989',
           address: '10, olorunfunmi street, iponri, america',
-          isAdmin: true,
+          is_admin: true,
         })
         .end((error, response) => {
           expect(response.body).to.be.an('object');
@@ -73,11 +73,11 @@ describe('Testing signup controller', () => {
         .post(signupUrl)
         .send({
           email: 'test@test.com',
-          lastName: 'olorunfunmi',
+          last_name: 'olorunfunmi',
           password: 'password1',
           phoneNumber: '07089898989',
           address: '10, olorunfunmi street, iponri, america',
-          isAdmin: true,
+          is_admin: true,
         })
         .end((error, response) => {
           expect(response.body).to.be.an('object');
@@ -94,12 +94,12 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test.com',
-        firstName: 'pa',
-        lastName: 'olorunfunmi',
+        first_name: 'pa',
+        last_name: 'olorunfunmi',
         password: 'password1',
         phoneNumber: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
@@ -116,11 +116,11 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test.com',
-        firstName: 'patrick',
+        first_name: 'patrick',
         password: 'password1',
         phoneNumber: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
@@ -137,12 +137,12 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test.com',
-        firstName: 'patrick',
-        lastName: 'pa',
+        first_name: 'patrick',
+        last_name: 'pa',
         password: 'password1',
         phoneNumber: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
@@ -159,11 +159,11 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test.com',
-        firstName: 'patrick',
-        lastName: 'olorunfunmi',
+        first_name: 'patrick',
+        last_name: 'olorunfunmi',
         phoneNumber: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
@@ -181,11 +181,11 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test.com',
-        firstName: 'patrick',
-        lastName: 'olorunfunmi',
+        first_name: 'patrick',
+        last_name: 'olorunfunmi',
         password: 'password1',
         address: '10, olorunfunmi street, iponri, america',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
@@ -202,11 +202,11 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test.com',
-        firstName: 'patrick',
-        lastName: 'olorunfunmi',
+        first_name: 'patrick',
+        last_name: 'olorunfunmi',
         password: 'password1',
         phoneNumber: '07089898989',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
@@ -223,12 +223,12 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test.com',
-        firstName: 'patrick',
-        lastName: 'olorunfunmi',
+        first_name: 'patrick',
+        last_name: 'olorunfunmi',
         password: 'password1',
         phoneNumber: '07089898989',
         address: '#####$$$$',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
@@ -245,12 +245,12 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test',
-        firstName: 'patrick',
-        lastName: 'olorunfunmi',
+        first_name: 'patrick',
+        last_name: 'olorunfunmi',
         password: 'password1',
         phoneNumber: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
@@ -267,12 +267,12 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test.com',
-        firstName: 'patrick',
-        lastName: 'olorunfunmi',
+        first_name: 'patrick',
+        last_name: 'olorunfunmi',
         password: 'password1',
         phoneNumber: '070898989',
         address: '10, olorunfunmi street, iponri, america',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
@@ -289,12 +289,12 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test.com',
-        firstName: 'patrick',
-        lastName: 'olorunfunmi',
+        first_name: 'patrick',
+        last_name: 'olorunfunmi',
         password: 'passwor',
         phoneNumber: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
@@ -312,12 +312,12 @@ describe('Testing signup controller', () => {
       .post(signupUrl)
       .send({
         email: 'test@test.com',
-        firstName: 'patrick',
-        lastName: 'olorunfunmi',
+        first_name: 'patrick',
+        last_name: 'olorunfunmi',
         password: 'password1',
         phoneNumber: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
-        isAdmin: true,
+        is_admin: true,
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
