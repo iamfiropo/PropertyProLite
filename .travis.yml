@@ -7,9 +7,9 @@ cache:
 script:
   - babel-node server.js &
   - npm run test
-branches:
-  only:
-  - develop
+# branches:
+#   only:
+#   - develop
 after_success: 
   - npm run coveralls
 notifications:

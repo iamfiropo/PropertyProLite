@@ -24,6 +24,7 @@ class userController {
 
   static async signIn(req, res) {
     try {
+      // res.locals.user = req.user;
       const { email, password } = req.body;
       const signInUser = new UserModel(email);
       if (signInUser.signIn()) {

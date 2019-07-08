@@ -43,7 +43,21 @@ class Property extends Model {
       return Response.handleError(500, error.toString());
     }
   }
-}
 
+  async deleteProperty() {
+    try {
+      const propertyId = this.payload;
+      const obj = Data.some(property => property.id === propertyId);
+      if (!obj) {
+        return false;
+      }
+      // console.log('***************');
+      await this.deletePro(Data, propertyId);
+      return true;
+    } catch (error) {
+      return Response.handleError(500, error.toString());
+    }
+  }
+}
 
 export default Property;

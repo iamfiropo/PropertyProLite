@@ -301,3 +301,34 @@ describe('Testing custom 404 route', () => {
         });
     });
 });
+
+describe('Testing delete a specific property advert controller', () => {
+  const propertyUrl = '/api/v1/property/1';
+  const propertyUrlN = '/api/v1/property/11111111111111111111111';
+  it('should delete a specific property advert successfully',
+    (done) => {
+      chai
+        .request(server)
+        .delete(propertyUrl)
+        .end((error, response) => {
+          expect(response.body).to.be.an('object');
+          expect(response.body.status).to.equal(200);
+          expect(response.body.data).to.be.a('object');
+          done();
+        });
+    });
+
+  it('should not get a specific property advert if the id is not in the database',
+    (done) => {
+      chai
+        .request(server)
+        .delete(propertyUrlN)
+        .end((error, response) => {
+          expect(response.body).to.be.an('object');
+          expect(response.body.status).to.equal(404);
+          expect(response.body.error).to.be.a('string');
+          expect(response.body.error).to.equal('Property id not found');
+          done();
+        });
+    });
+});

@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import Debug from 'debug';
+import cors from 'cors';
 import { config } from 'dotenv';
 import 'regenerator-runtime/runtime';
 import './server/config/cloudinary';
@@ -14,6 +15,7 @@ app.use(logger('dev'));
 const debug = Debug('http');
 const port = process.env.PORT;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

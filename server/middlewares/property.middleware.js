@@ -29,6 +29,16 @@ class PropertyValidation {
       return Response.handleError(500, error.toString(), res);
     }
   }
+
+  // static async update(req, res, next) {
+  //   try {
+  //     const { type } = req.params.id;
+  //     if (!type) return Response.handleError(400, 'No valid query detected e.g properties?type=duplex', res);
+  //     next();
+  //   } catch (error) {
+  //     return Response.handleError(500, error.toString(), res);
+  //   }
+  // }
 }
 
 export default PropertyValidation;

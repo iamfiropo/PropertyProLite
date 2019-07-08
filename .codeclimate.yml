@@ -4,15 +4,15 @@ plugins:
     enabled: true
     extensions:
     - .json
-    checks:
-      method-complexity:
-        enabled: false
-      return-statements:
-        enabled: false
-      complex-logic:
-        enabled: false
-      method-lines:
-        enabled: false
+  checks:
+    method-complexity:
+      enabled: false
+    return-statements:
+      enabled: false
+    complex-logic:
+      enabled: false
+    method-lines:
+      enabled: false
     config:
       ignore_warnings: true
 exclude_patterns:
