@@ -5,7 +5,13 @@ plugins:
     extensions:
     - .json
     checks:
-      complexity:
+      method-complexity:
+        enabled: false
+      return-statements:
+        enabled: false
+      complex-logic:
+        enabled: false
+      method-lines:
         enabled: false
     config:
       ignore_warnings: true

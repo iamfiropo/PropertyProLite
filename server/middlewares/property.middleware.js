@@ -8,15 +8,25 @@ class PropertyValidation {
         price, state, city, address,
       } = req.body;
       if (!price || !state || !city || !address) {
-        Response.handleError(400, 'Please fill all the required fields', res);
+        return Response.handleError(400, 'Please fill all the required fields', res);
       }
-      if (await InputCheck.floatCheck(price)) Response.handleError(400, 'Enter valid price in numeric', res);
-      if (await InputCheck.nameCheck(state)) Response.handleError(400, 'Enter valid state', res);
-      if (await InputCheck.nameCheck(city)) Response.handleError(400, 'Enter valid city', res);
-      if (await InputCheck.addressCheck(address)) Response.handleError(400, 'Enter valid address', res);
+      if (await InputCheck.floatCheck(price)) return Response.handleError(400, 'Enter valid price in numeric', res);
+      if (await InputCheck.nameCheck(state)) return Response.handleError(400, 'Enter valid state', res);
+      if (await InputCheck.nameCheck(city)) return Response.handleError(400, 'Enter valid city', res);
+      if (await InputCheck.addressCheck(address)) return Response.handleError(400, 'Enter valid address', res);
       next();
     } catch (error) {
-      Response.handleError(500, error.toString(), res);
+      return Response.handleError(500, error.toString(), res);
+    }
+  }
+
+  static async findByType(req, res, next) {
+    try {
+      const { type } = req.query;
+      if (!type) return Response.handleError(400, 'No valid query detected e.g properties?type=duplex', res);
+      next();
+    } catch (error) {
+      return Response.handleError(500, error.toString(), res);
     }
   }
 }
