@@ -10,9 +10,9 @@ const Route = (logger, router) => {
   router.get('/property', PropertyController.findAll);
   router.get('/property/:id', PropertyController.findOne);
   router.get('/properties', PropertyMiddleware.findByType, PropertyController.findByType);
-  // router.patch('/property/:id', PropertyController.update);
-  // router.patch('/property/:id/sold', PropertyController.updateSold);
-  router.delete('/property/:id', PropertyController.deleteProperty);
+  router.patch('/property/:id', PropertyMiddleware.update, PropertyController.update);
+  router.patch('/property/:id/sold', PropertyMiddleware.markSold, PropertyController.markSold);
+  router.delete('/property/:id', PropertyController.delete);
   return router;
 };
 

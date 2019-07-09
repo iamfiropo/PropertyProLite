@@ -268,40 +268,6 @@ describe('Testing get all property of a specific type', () => {
     });
 });
 
-describe('Testing the root route', () => {
-  const rootUrl = '/api/v1';
-  it('should get the root route',
-    (done) => {
-      chai
-        .request(server)
-        .get(rootUrl)
-        .end((error, response) => {
-          expect(response.body).to.be.an('object');
-          expect(response.body.status).to.equal(200);
-          expect(response.body.message).to.be.a('string');
-          expect(response.body.message).to.equal('Welcome to PropertyProLite API');
-          done();
-        });
-    });
-});
-
-describe('Testing custom 404 route', () => {
-  const notFoundUrl = '/api/v1/sljkdsfjlfs';
-  it('should get not found route',
-    (done) => {
-      chai
-        .request(server)
-        .get(notFoundUrl)
-        .end((error, response) => {
-          expect(response.body).to.be.an('object');
-          expect(response.body.status).to.equal(404);
-          expect(response.body.error).to.be.a('string');
-          expect(response.body.error).to.equal('Page not found');
-          done();
-        });
-    });
-});
-
 describe('Testing delete a specific property advert controller', () => {
   const propertyUrl = '/api/v1/property/1';
   const propertyUrlN = '/api/v1/property/11111111111111111111111';

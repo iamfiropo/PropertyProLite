@@ -13,7 +13,15 @@ class Property extends Model {
   }
 
   static async findAll() {
-    return Data;
+    try {
+      if (Data.length === 0) {
+        return false;
+      }
+      this.result = Data;
+      return this.result;
+    } catch (error) {
+      return Response.handleError(500, error.toString());
+    }
   }
 
   async findOne() {
@@ -44,14 +52,23 @@ class Property extends Model {
     }
   }
 
+  async updateProperty() {
+    try {
+      const property = this.payload;
+      await this.update(Data, property);
+      return true;
+    } catch (error) {
+      return Response.handleError(500, error.toString());
+    }
+  }
+
   async deleteProperty() {
     try {
       const propertyId = this.payload;
-      const obj = Data.some(property => property.id === propertyId);
+      const obj = Data.some(data => data.id === propertyId);
       if (!obj) {
         return false;
       }
-      // console.log('***************');
       await this.deletePro(Data, propertyId);
       return true;
     } catch (error) {

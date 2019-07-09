@@ -9,10 +9,15 @@ class Model {
     this.result = obj;
   }
 
-  async deletePro(db, obj) {
-    const index = obj - 1;
-    db.splice(index, obj);
+  async deletePro(db, id) {
+    const index = id - 1;
+    db.splice(index, 1);
     this.result = { message: 'Deleted successfully' };
+  }
+
+  async update(db, obj) {
+    const index = obj.id - 1;
+    this.result = db.splice(index, 1, Object.assign(db[index], obj));
   }
 }
 

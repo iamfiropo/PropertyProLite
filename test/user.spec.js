@@ -331,7 +331,6 @@ describe('Testing signup controller', () => {
 
 describe('Testing signin controller', () => {
   const signinUrl = '/api/v1/auth/signin';
-
   it('should sign in user when all the parameters are given',
     (done) => {
       chai
