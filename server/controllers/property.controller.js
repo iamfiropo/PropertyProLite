@@ -22,8 +22,11 @@ class PropertyController {
 
   static async findAll(req, res) {
     try {
-      const listOfProperty = await PropertyModel.findAll();
-      return Response.handleSuccess(200, 'Got all property adverts successfully', listOfProperty, res);
+      const listOfProperties = await PropertyModel.findAll();
+      if (listOfProperties) {
+        return Response.handleSuccess(200, 'Got all property adverts successfully', listOfProperties, res);
+      }
+      return Response.handleError(404, 'No property found', res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
     }
@@ -51,7 +54,32 @@ class PropertyController {
     }
   }
 
-  static async deleteProperty(req, res) {
+  static async update(req, res) {
+    try {
+      const propertyId = parseInt(req.params.id, 10);
+      const newProperty = req.body;
+      newProperty.id = propertyId;
+      const property = new PropertyModel({ ...newProperty });
+      await property.updateProperty();
+      return Response.handleSuccess(200, 'Updated Successfully', property.result, res);
+    } catch (error) {
+      return Response.handleError(500, error.toString(), res);
+    }
+  }
+
+  static async markSold(req, res) {
+    try {
+      const id = parseInt(req.params.id, 10);
+      const soldProperty = { status: 'sold' };
+      const property = new PropertyModel({ id, ...soldProperty });
+      await property.updateProperty();
+      return Response.handleSuccess(200, 'Mark as sold successfully', property.result, res);
+    } catch (error) {
+      return Response.handleError(500, error.toString(), res);
+    }
+  }
+
+  static async delete(req, res) {
     try {
       const propertyId = parseInt(req.params.id, 10);
       const property = new PropertyModel(propertyId);
