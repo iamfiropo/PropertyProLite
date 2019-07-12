@@ -9,8 +9,7 @@ class PropertyController {
       const property = req.body;
       const newId = Id(Data);
       property.id = newId;
-      // property.owner = res.locals.user;
-      property.owner = 1;
+      property.owner = res.locals.user;
       property.created_on = new Date();
       const newProperty = new PropertyModel({ ...property });
       newProperty.create();

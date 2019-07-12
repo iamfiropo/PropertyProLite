@@ -1,5 +1,5 @@
 import Response from '../utils/helpers/response';
-import InputCheck from '../utils/helpers/input.check';
+import Check from '../utils/helpers/check';
 import Data from '../db/property';
 
 class PropertyValidation {
@@ -11,10 +11,10 @@ class PropertyValidation {
       if (!price || !state || !city || !address) {
         return Response.handleError(400, 'Please fill all the required fields', res);
       }
-      if (await InputCheck.floatCheck(price)) return Response.handleError(400, 'Enter valid price in numeric', res);
-      if (await InputCheck.nameCheck(state)) return Response.handleError(400, 'Enter valid state', res);
-      if (await InputCheck.nameCheck(city)) return Response.handleError(400, 'Enter valid city', res);
-      if (await InputCheck.addressCheck(address)) return Response.handleError(400, 'Enter valid address', res);
+      if (await Check.checkFloat(price)) return Response.handleError(400, 'Enter valid price in numeric', res);
+      if (await Check.checkName(state)) return Response.handleError(400, 'Enter valid state', res);
+      if (await Check.checkName(city)) return Response.handleError(400, 'Enter valid city', res);
+      if (await Check.checkAddress(address)) return Response.handleError(400, 'Enter valid address', res);
       next();
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
@@ -41,10 +41,10 @@ class PropertyValidation {
       if (!id) {
         return Response.handleError(404, 'Property id not found', res);
       }
-      if (await InputCheck.floatCheck(price)) return Response.handleError(400, 'Enter valid price in numeric', res);
-      if (await InputCheck.nameCheck(state)) return Response.handleError(400, 'Enter valid state', res);
-      if (await InputCheck.nameCheck(city)) return Response.handleError(400, 'Enter valid city', res);
-      if (await InputCheck.addressCheck(address)) return Response.handleError(400, 'Enter valid address', res);
+      if (await Check.checkFloat(price)) return Response.handleError(400, 'Enter valid price in numeric', res);
+      if (await Check.checkName(state)) return Response.handleError(400, 'Enter valid state', res);
+      if (await Check.checkName(city)) return Response.handleError(400, 'Enter valid city', res);
+      if (await Check.checkAddress(address)) return Response.handleError(400, 'Enter valid address', res);
       next();
     } catch (error) {
       return Response.handleError(500, error.toString(), res);

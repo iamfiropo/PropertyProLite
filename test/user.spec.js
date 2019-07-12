@@ -15,7 +15,7 @@ describe('Testing signup controller', () => {
         .request(server)
         .post(signupUrl)
         .send({
-          email: 'test@test.com',
+          email: 'john@test.com',
           first_name: 'patrick',
           last_name: 'olorunfunmi',
           password: 'password1',
@@ -23,13 +23,12 @@ describe('Testing signup controller', () => {
           address: '10, olorunfunmi street, iponri, america',
           is_admin: true,
         })
-
         .end((error, response) => {
           expect(response.body).to.be.an('object');
           expect(response).to.have.status(201);
           expect(response.body.status).to.equal(201);
           expect(response.body.data).to.be.a('object');
-          // expect(response.body.data).to.have.property('token');
+          expect(response.body.data).to.have.property('token');
           expect(response.body.data).to.have.property('id');
           expect(response.body.data).to.have.property('email');
           expect(response.body.data).to.have.property('first_name');
@@ -37,8 +36,8 @@ describe('Testing signup controller', () => {
           expect(response.body.data).to.have.property('password');
           expect(response.body.data).to.have.property('phoneNumber');
           expect(response.body.data).to.have.property('address');
-          // expect(response.body.data.token).to.be.a('string');
-          expect(response.body.data.email).to.equal('test@test.com');
+          expect(response.body.data.token).to.be.a('string');
+          expect(response.body.data.email).to.equal('john@test.com');
           expect(response.body.message).to.equal('Successfully Created');
           done();
         });
@@ -344,8 +343,10 @@ describe('Testing signin controller', () => {
         .end((error, response) => {
           expect(response.body).to.be.an('object');
           expect(response).to.have.status(200);
+          expect(response.body.data).to.have.property('token');
           expect(response.body.status).to.equal(200);
           expect(response.body).to.be.a('object');
+          expect(response.body.data.token).to.be.a('string');
           expect(response.body.message).to.equal('User sign in successfully');
           done();
         });
@@ -450,7 +451,7 @@ describe('Testing signin controller', () => {
         expect(response.body).to.be.a('object');
         expect(response.body.status).to.equal(404);
         expect(response.body.error).to.be.a('string');
-        expect(response.body.error).to.equal('Sorry, we don\'t recognize this email');
+        expect(response.body.error).to.equal('Sorry, we do not recognize this email');
         done();
       });
   });
