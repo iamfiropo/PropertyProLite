@@ -1,17 +1,15 @@
 import Model from './model';
 import Users from '../db/users';
 import Response from '../utils/helpers/response';
+import Token from '../utils/helpers/jwt';
 
 class User extends Model {
   async signUp() {
-    /**
-     * Check if email already exist before saving into the database
-     * If it does, return false
-     */
     try {
       const newUser = this.payload;
       const email = Users.some(user => user.email === newUser.email);
       if (!email) {
+        newUser.token = await Token.userToken({ ...newUser.id, ...newUser.email });
         await this.save(Users, newUser);
         return true;
       }
@@ -22,20 +20,12 @@ class User extends Model {
   }
 
   async signIn() {
-    /**
-     * Check if user exist in the database
-     * If it does, return the user
-     */
-    const signInUser = this.payload;
-    const obj = Users.find((user) => {
-      if (user.email === signInUser) {
-        return user;
-      }
-      return false;
-    });
+    const email = this.payload;
+    const obj = Users.find(user => user.email === email);
     if (!obj) {
       return false;
     }
+    obj.token = await Token.userToken({ ...obj.id, ...obj.email });
     this.result = obj;
     return true;
   }

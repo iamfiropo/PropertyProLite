@@ -27,14 +27,15 @@ class userController {
       // res.locals.user = req.user;
       const { email, password } = req.body;
       const signInUser = new UserModel(email);
-      if (signInUser.signIn()) {
+      if (await signInUser.signIn()) {
         if (bcrypt.compareSync(password, signInUser.result.password)) {
-          return Response.handleSuccess(200, 'User sign in successfully', signInUser.result.password, res);
+          return Response.handleSuccess(200, 'User sign in successfully', signInUser.result, res);
         }
         return Response.handleError(401, 'Wrong password. Please try again', res);
       }
+      return Response.handleError(404, 'Sorry, we do not recognize this email', res);
     } catch (error) {
-      return Response.handleError(404, 'Sorry, we don\'t recognize this email', res);
+      return Response.handleError(500, error.toString(), res);
     }
   }
 }
