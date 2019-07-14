@@ -19,7 +19,7 @@ describe('Testing signup controller', () => {
           first_name: 'patrick',
           last_name: 'olorunfunmi',
           password: 'password1',
-          phoneNumber: '07089898989',
+          phone_number: '07089898989',
           address: '10, olorunfunmi street, iponri, america',
           is_admin: true,
         })
@@ -34,7 +34,7 @@ describe('Testing signup controller', () => {
           expect(response.body.data).to.have.property('first_name');
           expect(response.body.data).to.have.property('last_name');
           expect(response.body.data).to.have.property('password');
-          expect(response.body.data).to.have.property('phoneNumber');
+          expect(response.body.data).to.have.property('phone_number');
           expect(response.body.data).to.have.property('address');
           expect(response.body.data.token).to.be.a('string');
           expect(response.body.data.email).to.equal('john@test.com');
@@ -52,7 +52,7 @@ describe('Testing signup controller', () => {
           first_name: 'patrick',
           last_name: 'olorunfunmi',
           password: 'password1',
-          phoneNumber: '07089898989',
+          phone_number: '07089898989',
           address: '10, olorunfunmi street, iponri, america',
           is_admin: true,
         })
@@ -74,7 +74,7 @@ describe('Testing signup controller', () => {
           email: 'test@test.com',
           last_name: 'olorunfunmi',
           password: 'password1',
-          phoneNumber: '07089898989',
+          phone_number: '07089898989',
           address: '10, olorunfunmi street, iponri, america',
           is_admin: true,
         })
@@ -96,7 +96,7 @@ describe('Testing signup controller', () => {
         first_name: 'pa',
         last_name: 'olorunfunmi',
         password: 'password1',
-        phoneNumber: '07089898989',
+        phone_number: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
         is_admin: true,
       })
@@ -117,7 +117,7 @@ describe('Testing signup controller', () => {
         email: 'test@test.com',
         first_name: 'patrick',
         password: 'password1',
-        phoneNumber: '07089898989',
+        phone_number: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
         is_admin: true,
       })
@@ -139,7 +139,7 @@ describe('Testing signup controller', () => {
         first_name: 'patrick',
         last_name: 'pa',
         password: 'password1',
-        phoneNumber: '07089898989',
+        phone_number: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
         is_admin: true,
       })
@@ -160,7 +160,7 @@ describe('Testing signup controller', () => {
         email: 'test@test.com',
         first_name: 'patrick',
         last_name: 'olorunfunmi',
-        phoneNumber: '07089898989',
+        phone_number: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
         is_admin: true,
       })
@@ -204,7 +204,7 @@ describe('Testing signup controller', () => {
         first_name: 'patrick',
         last_name: 'olorunfunmi',
         password: 'password1',
-        phoneNumber: '07089898989',
+        phone_number: '07089898989',
         is_admin: true,
       })
       .end((error, response) => {
@@ -225,7 +225,7 @@ describe('Testing signup controller', () => {
         first_name: 'patrick',
         last_name: 'olorunfunmi',
         password: 'password1',
-        phoneNumber: '07089898989',
+        phone_number: '07089898989',
         address: '#####$$$$',
         is_admin: true,
       })
@@ -247,7 +247,7 @@ describe('Testing signup controller', () => {
         first_name: 'patrick',
         last_name: 'olorunfunmi',
         password: 'password1',
-        phoneNumber: '07089898989',
+        phone_number: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
         is_admin: true,
       })
@@ -269,7 +269,7 @@ describe('Testing signup controller', () => {
         first_name: 'patrick',
         last_name: 'olorunfunmi',
         password: 'password1',
-        phoneNumber: '070898989',
+        phone_number: '070898989',
         address: '10, olorunfunmi street, iponri, america',
         is_admin: true,
       })
@@ -291,7 +291,7 @@ describe('Testing signup controller', () => {
         first_name: 'patrick',
         last_name: 'olorunfunmi',
         password: 'passwor',
-        phoneNumber: '07089898989',
+        phone_number: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
         is_admin: true,
       })
@@ -314,7 +314,7 @@ describe('Testing signup controller', () => {
         first_name: 'patrick',
         last_name: 'olorunfunmi',
         password: 'password1',
-        phoneNumber: '07089898989',
+        phone_number: '07089898989',
         address: '10, olorunfunmi street, iponri, america',
         is_admin: true,
       })

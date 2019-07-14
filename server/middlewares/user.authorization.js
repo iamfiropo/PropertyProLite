@@ -5,16 +5,16 @@ class UserValidation {
   static async signUp(req, res, next) {
     try {
       const {
-        first_name, last_name, email, phoneNumber, address, password, is_admin,
+        first_name, last_name, email, phone_number, address, password, is_admin,
       } = req.body;
-      if (!first_name || !last_name || !email || !phoneNumber
+      if (!first_name || !last_name || !email || !phone_number
         || !address || !password || is_admin === undefined) {
         return Response.handleError(400, 'Please fill all the required fields', res);
       }
       if (await Check.checkName(first_name)) return Response.handleError(400, 'Enter valid first name', res);
       if (await Check.checkName(last_name)) return Response.handleError(400, 'Enter valid last name', res);
       if (await Check.checkEmail(email)) return Response.handleError(400, 'Enter valid email', res);
-      if (await Check.checkPhoneNo(phoneNumber)) return Response.handleError(400, 'Enter valid phone number', res);
+      if (await Check.checkPhoneNo(phone_number)) return Response.handleError(400, 'Enter valid phone number', res);
       if (await Check.checkAddress(address)) return Response.handleError(400, 'Enter valid address', res);
       if (await Check.checkPassword(password)) {
         return Response.handleError(400,

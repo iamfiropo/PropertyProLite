@@ -9,7 +9,7 @@ class PropertyValidation {
       const {
         price, state, city, address,
       } = req.body;
-      if (!is_admin) return Response.handleError(403, 'You do not have access to this route', res);
+      if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
       if (!price || !state || !city || !address) {
         return Response.handleError(400, 'Please fill all the required fields', res);
       }
@@ -40,7 +40,7 @@ class PropertyValidation {
       const {
         price, state, city, address,
       } = req.body;
-      if (!is_admin) return Response.handleError(403, 'You do not have access to this route', res);
+      if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
       const id = Data.some(data => data.id === propertyId);
       if (!id) {
         return Response.handleError(404, 'Property id not found', res);
@@ -59,7 +59,7 @@ class PropertyValidation {
     try {
       const is_admin = res.locals.user.is_admin;
       const propertyId = parseInt(req.params.id, 10);
-      if (!is_admin) return Response.handleError(403, 'You do not have access to this route', res);
+      if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
       const id = Data.some(data => data.id === propertyId);
       if (!id) {
         return Response.handleError(404, 'Property id not found', res);

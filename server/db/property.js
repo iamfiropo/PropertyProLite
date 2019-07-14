@@ -10,8 +10,8 @@ const property = [
     type: 'bungalow',
     created_on: new Date(),
     image_url: 'https://pixabay.com/photos/portrait-woman-lady-coffee-bar-4246954/',
-    ownerEmail: 'olu@gmail.com',
-    ownerPhoneNumber: '08089876543',
+    owner_email: 'olu@gmail.com',
+    owner_phone_number: '08089876543',
   },
   // {
   //   id: 2,
@@ -24,8 +24,8 @@ const property = [
   //   type: 'bungalow',
   //   created_on: new Date(),
   //   image_url: 'https://pixabay.com/photos/portrait-woman-lady-coffee-bar-4246954/',
-  //   ownerEmail: 'olu@gmail.com',
-  //   ownerPhoneNumber: '08089876543',
+  //   owner_email: 'olu@gmail.com',
+  //   owner_phone_number: '08089876543',
   // },
   // {
   //   id: 3,
@@ -38,8 +38,8 @@ const property = [
   //   type: 'duplex',
   //   created_on: new Date(),
   //   image_url: 'https://pixabay.com/photos/portrait-woman-lady-coffee-bar-4246954/',
-  //   ownerEmail: 'olu@gmail.com',
-  //   ownerPhoneNumber: '08089876543',
+  //   owner_email: 'olu@gmail.com',
+  //   owner_phone_number: '08089876543',
   // },
 ];
 

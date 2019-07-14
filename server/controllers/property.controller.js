@@ -11,6 +11,8 @@ class PropertyController {
       property.id = newId;
       property.owner = res.locals.user.id;
       property.created_on = new Date();
+      property.owner_email = res.locals.user.email;
+      property.owner_phone_number = res.locals.user.phone_number;
       const newProperty = new PropertyModel({ ...property });
       newProperty.create();
       return Response.handleSuccess(201, 'Successfully Created', newProperty.result, res);
@@ -81,7 +83,7 @@ class PropertyController {
   static async delete(req, res) {
     try {
       const is_admin = res.locals.user.is_admin;
-      if (!is_admin) return Response.handleError(403, 'You do not have access to this route', res);
+      if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
       const propertyId = parseInt(req.params.id, 10);
       const property = new PropertyModel(propertyId);
       if (await property.deleteProperty()) return Response.handleDelete(200, property.result, res);

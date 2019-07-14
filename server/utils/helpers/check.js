@@ -17,9 +17,9 @@ class Check {
     return false;
   }
 
-  static checkPhoneNo(phoneNumber) {
+  static checkPhoneNo(phone_number) {
     check = /^[0]\d{10}$/;
-    if (!check.test(phoneNumber)) {
+    if (!check.test(phone_number)) {
       return true;
     }
     return false;
