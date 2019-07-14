@@ -9,7 +9,7 @@ class PropertyController {
       const property = req.body;
       const newId = Id(Data);
       property.id = newId;
-      property.owner = res.locals.user;
+      property.owner = res.locals.user.id;
       property.created_on = new Date();
       const newProperty = new PropertyModel({ ...property });
       newProperty.create();
@@ -80,6 +80,8 @@ class PropertyController {
 
   static async delete(req, res) {
     try {
+      const is_admin = res.locals.user.is_admin;
+      if (!is_admin) return Response.handleError(403, 'You do not have access to this route', res);
       const propertyId = parseInt(req.params.id, 10);
       const property = new PropertyModel(propertyId);
       if (await property.deleteProperty()) return Response.handleDelete(200, property.result, res);

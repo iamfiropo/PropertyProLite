@@ -4,7 +4,7 @@ import { config } from 'dotenv';
 config();
 
 const userToken = (payload) => {
-  const token = jwt.sign({ payload }, process.env.JWT_SECRET, {
+  const token = jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn: '24h',
   });
   return token;

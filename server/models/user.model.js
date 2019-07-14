@@ -1,15 +1,16 @@
 import Model from './model';
 import Users from '../db/users';
 import Response from '../utils/helpers/response';
-import Token from '../utils/helpers/jwt';
+import Token from '../config/jwt';
 
 class User extends Model {
   async signUp() {
     try {
       const newUser = this.payload;
-      const email = Users.some(user => user.email === newUser.email);
-      if (!email) {
-        newUser.token = await Token.userToken({ ...newUser.id, ...newUser.email });
+      const { id, email, is_admin } = this.payload;
+      const obj = Users.some(user => user.email === email);
+      if (!obj) {
+        newUser.token = await Token.userToken({ id, email, is_admin });
         await this.save(Users, newUser);
         return true;
       }
@@ -22,10 +23,12 @@ class User extends Model {
   async signIn() {
     const email = this.payload;
     const obj = Users.find(user => user.email === email);
+    const id = obj.id;
+    const is_admin = obj.is_admin;
     if (!obj) {
       return false;
     }
-    obj.token = await Token.userToken({ ...obj.id, ...obj.email });
+    obj.token = await Token.userToken({ id, email, is_admin });
     this.result = obj;
     return true;
   }
