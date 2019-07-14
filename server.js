@@ -13,7 +13,7 @@ const app = express();
 
 app.use(logger('dev'));
 const debug = Debug('http');
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
