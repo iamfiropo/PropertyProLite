@@ -10,7 +10,7 @@ class PropertyValidation {
         price, state, city, address, token, type, image_url,
       } = req.body;
       // if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
-      if (!price || !state || !city || !address || !token || !type || !image_url) {
+      if (!price || !state || !city || !address || !type || !image_url) {
         return Response.handleError(400, 'Please fill all the required fields', res);
       }
       // if (await Check.checkFloat(price)) return Response.handleError(400, 'Enter valid price in numeric', res);
