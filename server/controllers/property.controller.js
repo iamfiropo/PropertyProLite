@@ -35,7 +35,7 @@ class PropertyController {
 
   static async findOne(req, res) {
     try {
-      const propertyId = parseInt(req.params.id, 10);
+      const propertyId = parseInt(req.params.property_id, 10);
       const property = new PropertyModel(propertyId);
       if (await property.findOne()) return Response.handleSuccess(200, 'Got the specific property advert successfully', property.result, res);
       return Response.handleError(404, 'Property not found', res);
@@ -57,7 +57,7 @@ class PropertyController {
 
   static async update(req, res) {
     try {
-      const propertyId = parseInt(req.params.id, 10);
+      const propertyId = parseInt(req.params.property_id, 10);
       const newProperty = req.body;
       newProperty.id = propertyId;
       const property = new PropertyModel({ ...newProperty });
@@ -70,7 +70,7 @@ class PropertyController {
 
   static async markSold(req, res) {
     try {
-      const id = parseInt(req.params.id, 10);
+      const id = parseInt(req.params.property_id, 10);
       const soldProperty = { status: 'sold' };
       const property = new PropertyModel({ id, ...soldProperty });
       await property.updateProperty();
@@ -84,7 +84,7 @@ class PropertyController {
     try {
       const is_admin = res.locals.user.is_admin;
       if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
-      const propertyId = parseInt(req.params.id, 10);
+      const propertyId = parseInt(req.params.property_id, 10);
       const property = new PropertyModel(propertyId);
       if (await property.deleteProperty()) return Response.handleDelete(200, property.result, res);
       return Response.handleError(404, 'Property id not found', res);

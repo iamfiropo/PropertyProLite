@@ -5,8 +5,12 @@ class UserValidation {
   static async signUp(req, res, next) {
     try {
       const {
-        first_name, last_name, email, phone_number, address, password,
+        first_name, last_name, email, phone_number, address, password, is_admin,
       } = req.body;
+      // if (!first_name || !last_name || !email || !phone_number
+      //   || !address || !password || is_admin === undefined) {
+      //   return Response.handleError(400, 'Please fill all the required fields', res);
+      // }
       if (!first_name || !last_name || !email || !phone_number
         || !address || !password) {
         return Response.handleError(400, 'Please fill all the required fields', res);
