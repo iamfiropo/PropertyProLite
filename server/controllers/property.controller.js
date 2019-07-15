@@ -83,7 +83,7 @@ class PropertyController {
   static async delete(req, res) {
     try {
       const is_admin = res.locals.user.is_admin;
-      if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
+      // if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
       const property_id = parseInt(req.params.property_id, 10);
       const property = new PropertyModel(property_id);
       if (await property.deleteProperty()) return Response.handleDelete(200, property.result, res);
