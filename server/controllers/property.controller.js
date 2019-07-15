@@ -72,7 +72,9 @@ class PropertyController {
     try {
       const id = parseInt(req.params.property_id, 10);
       const soldProperty = { status: 'sold' };
-      const property = new PropertyModel({ id, ...soldProperty });
+      const created_on = new Date();
+      const property = new PropertyModel({ id, ...soldProperty, created_on });
+      // console.log('*******', property);
       await property.updateProperty();
       return Response.handleSuccess(200, 'Mark as sold successfully', property.result, res);
     } catch (error) {
