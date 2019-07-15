@@ -11,8 +11,11 @@ class Model {
 
   async deletePro(db, id) {
     const index = id - 1;
-    db.splice(index, 1);
+    const response = db.splice(index, 1);
     this.result = { message: 'Deleted successfully' };
+    this.result.id = response[0].id;
+    // console.log('*********del**********', this.data);
+    return this.result;
   }
 
   async update(db, obj) {

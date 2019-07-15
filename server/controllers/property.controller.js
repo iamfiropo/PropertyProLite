@@ -86,7 +86,7 @@ class PropertyController {
       if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
       const property_id = parseInt(req.params.property_id, 10);
       const property = new PropertyModel(property_id);
-      if (await property.deleteProperty()) return Response.handleDelete(200, property.payload, res);
+      if (await property.deleteProperty()) return Response.handleDelete(200, property.result, res);
       return Response.handleError(404, 'Property id not found', res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
