@@ -57,13 +57,13 @@ class PropertyValidation {
 
   static async markSold(req, res, next) {
     try {
-      const is_admin = res.locals.user.is_admin;
-      const propertyId = parseInt(req.params.id, 10);
+      // const is_admin = res.locals.user.is_admin;
+      // const propertyId = parseInt(req.params.id, 10);
       // if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
-      const id = Data.some(data => data.id === propertyId);
-      if (!id) {
-        return Response.handleError(404, 'Property id not found', res);
-      }
+      // const id = Data.some(data => data.id === propertyId);
+      // if (!id) {
+      //   return Response.handleError(404, 'Property id not found', res);
+      // }
       next();
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
