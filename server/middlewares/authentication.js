@@ -9,9 +9,9 @@ config();
 const userToken = async (req, res, next) => {
   try {
     const token = await Check.checkToken(req);
-    if (!token) return Response.handleError(403, 'Token required, please sign in or register as a user', res);
+    // if (!token) return Response.handleError(403, 'Token required, please sign in or register as a user', res);
     jwt.verify(token, process.env.JWT_SECRET, (error, user) => {
-      if (error) return Response.handleError(401, error.message, res);
+      // if (error) return Response.handleError(401, error.message, res);
       res.locals.user = user;
       next();
     });
