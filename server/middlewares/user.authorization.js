@@ -34,9 +34,9 @@ class UserValidation {
   static async signIn(req, res, next) {
     try {
       const { email, password } = req.body;
-      if (!email || !password) {
-        return Response.handleError(400, 'Please fill all the required fields', res);
-      }
+      // if (!email || !password) {
+      //   return Response.handleError(400, 'Please fill all the required fields', res);
+      // }
       // if (await Check.checkEmail(email)) return Response.handleError(400, 'Enter valid email', res);
       // if (await Check.checkPassword(password)) return Response.handleError(400, 'Enter valid password', res);
       next();
