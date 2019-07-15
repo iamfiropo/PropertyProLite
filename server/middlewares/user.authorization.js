@@ -11,12 +11,10 @@ class UserValidation {
       //   || !address || !password || is_admin === undefined) {
       //   return Response.handleError(400, 'Please fill all the required fields', res);
       // }
-
-      // if (!first_name || !last_name || !email || !phone_number
-      //   || !address || !password) {
-      //   return Response.handleError(400, 'Please fill all the required fields', res);
-      // }
-
+      if (!first_name || !last_name || !email || !phone_number
+        || !address || !password) {
+        return Response.handleError(400, 'Please fill all the required fields', res);
+      }
       // if (await Check.checkName(first_name)) return Response.handleError(400, 'Enter valid first name', res);
       // if (await Check.checkName(last_name)) return Response.handleError(400, 'Enter valid last name', res);
       // if (await Check.checkEmail(email)) return Response.handleError(400, 'Enter valid email', res);
