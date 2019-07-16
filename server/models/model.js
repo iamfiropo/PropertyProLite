@@ -18,6 +18,7 @@ class Model {
 
   async update(db, obj) {
     const index = obj.id - 1;
+    obj.created_on = new Date();
     this.result = db.splice(index, 1, Object.assign(db[index], obj));
   }
 }

@@ -55,7 +55,6 @@ class Property extends Model {
   async updateProperty() {
     try {
       const property = this.payload;
-      console.log('************update***********', property);
       await this.update(Data, property);
       return true;
     } catch (error) {
