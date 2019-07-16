@@ -75,6 +75,7 @@ class PropertyController {
       const soldProperty = { status: 'sold' };
       const property = new PropertyModel({ id, ...soldProperty });
       await property.updateProperty();
+      console.log('************mardSold***********', property.result);
       return Response.handleSuccess(200, 'Mark as sold successfully', property.result, res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
