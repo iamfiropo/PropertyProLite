@@ -6,7 +6,6 @@ import PropertyModel from '../models/property.model';
 class PropertyController {
   static async create(req, res) {
     try {
-      console.log('*****create*****', req.body);
       const property = req.body;
       const newId = Id(Data);
       property.id = newId;
@@ -16,6 +15,7 @@ class PropertyController {
       property.owner_phone_number = res.locals.user.phone_number;
       const newProperty = new PropertyModel({ ...property });
       newProperty.create();
+      console.log('*****create*****', newProperty.result);
       return Response.handleSuccess(201, 'Successfully Created', newProperty.result, res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
