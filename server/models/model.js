@@ -18,7 +18,7 @@ class Model {
 
   async update(db, obj) {
     const index = obj.id - 1;
-    this.result = db.splice(index, 1, Object.assign(db[index], obj));
+    this.result[0] = db.splice(index, 1, Object.assign(db[index], obj));
   }
 }
 

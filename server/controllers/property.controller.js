@@ -63,7 +63,7 @@ class PropertyController {
       newProperty.id = property_id;
       const property = new PropertyModel({ ...newProperty });
       await property.updateProperty();
-      return Response.handleSuccess(200, 'Updated Successfully', property.result[0], res);
+      return Response.handleSuccess(200, 'Updated Successfully', property.result, res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
     }
@@ -75,7 +75,7 @@ class PropertyController {
       const soldProperty = { status: 'sold' };
       const property = new PropertyModel({ id, ...soldProperty });
       await property.updateProperty();
-      return Response.handleSuccess(200, 'Mark as sold successfully', property.result[0], res);
+      return Response.handleSuccess(200, 'Mark as sold successfully', property.result, res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
     }
