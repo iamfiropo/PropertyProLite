@@ -10,6 +10,7 @@ class PropertyController {
       const newId = Id(Data);
       property.id = newId;
       property.owner = res.locals.user.id;
+      property.status = 'available';
       property.created_on = new Date();
       property.owner_email = res.locals.user.email;
       property.owner_phone_number = res.locals.user.phone_number;
