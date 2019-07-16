@@ -6,6 +6,7 @@ import PropertyModel from '../models/property.model';
 class PropertyController {
   static async create(req, res) {
     try {
+      console.log('*****create*****', req.body);
       const property = req.body;
       const newId = Id(Data);
       property.id = newId;
@@ -57,6 +58,7 @@ class PropertyController {
 
   static async update(req, res) {
     try {
+      console.log('*****update*****', req.params);
       const property_id = parseInt(req.params.property_id, 10);
       const newProperty = req.body;
       newProperty.id = property_id;
@@ -70,10 +72,10 @@ class PropertyController {
 
   static async markSold(req, res) {
     try {
+      console.log('*****marksold*****', req.params);
       const id = parseInt(req.params.property_id, 10);
       const soldProperty = { status: 'sold' };
       const property = new PropertyModel({ id, ...soldProperty });
-      console.log('*******', property);
       await property.updateProperty();
       return Response.handleSuccess(200, 'Mark as sold successfully', property.result, res);
     } catch (error) {
