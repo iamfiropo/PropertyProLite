@@ -55,6 +55,8 @@ class Property extends Model {
   async updateProperty() {
     try {
       const property = this.payload;
+      property.price = 445000;
+      property.created_on = new Date();
       await this.update(Data, property);
       return true;
     } catch (error) {

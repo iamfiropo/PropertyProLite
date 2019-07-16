@@ -62,9 +62,7 @@ class PropertyController {
       const newProperty = req.body;
       newProperty.id = property_id;
       const property = new PropertyModel({ ...newProperty });
-      property.price = 4445000;
       await property.updateProperty();
-      console.log('*****update*****', property.result);
       return Response.handleSuccess(200, 'Updated Successfully', property.result, res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
@@ -73,11 +71,9 @@ class PropertyController {
 
   static async markSold(req, res) {
     try {
-      console.log('*****marksold*****', req.params);
       const id = parseInt(req.params.property_id, 10);
       const soldProperty = { status: 'sold' };
       const property = new PropertyModel({ id, ...soldProperty });
-      property.created_on = new Date();
       await property.updateProperty();
       return Response.handleSuccess(200, 'Mark as sold successfully', property.result, res);
     } catch (error) {
