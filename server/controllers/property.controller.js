@@ -16,7 +16,6 @@ class PropertyController {
       property.owner_phone_number = res.locals.user.phone_number;
       const newProperty = new PropertyModel({ ...property });
       newProperty.create();
-      console.log('*****create*****', newProperty.result);
       return Response.handleSuccess(201, 'Successfully Created', newProperty.result, res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
@@ -59,12 +58,12 @@ class PropertyController {
 
   static async update(req, res) {
     try {
-      console.log('*****update*****', req.params);
       const property_id = parseInt(req.params.property_id, 10);
       const newProperty = req.body;
       newProperty.id = property_id;
       const property = new PropertyModel({ ...newProperty });
       await property.updateProperty();
+      console.log('*****create*****', property.result);
       return Response.handleSuccess(200, 'Updated Successfully', property.result, res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
