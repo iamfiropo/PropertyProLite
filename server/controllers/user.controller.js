@@ -10,8 +10,8 @@ class userController {
       const newUser = req.body;
       const hashedPassword = bcrypt.hashSync(newUser.password, bcrypt.genSaltSync(10), null);
       newUser.password = hashedPassword;
-      const newId = Id(Users);
-      newUser.id = newId;
+      // const newId = Id(Users);
+      // newUser.id = newId;
       const user = new UserModel({ ...newUser });
       if (!await user.signUp()) {
         return Response.handleError(409, 'Email already exist', res);

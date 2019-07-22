@@ -12,7 +12,10 @@
     "consistent-return": 0,
     "mocha/no-exclusive-tests": 2,
     "prefer-destructuring": 0,
-    "no-unused-vars": 0
+    "no-unused-vars": 0,
+    "max-len": 0,
+    "no-undef": 0,
+    "comma-dangle":0
     },
   "env": {
   "browser": true,

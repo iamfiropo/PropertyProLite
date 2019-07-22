@@ -1,4 +1,6 @@
+import moment from 'moment';
 import Response from '../utils/helpers/response';
+import db from '../models/index';
 import Id from '../utils/helpers/id';
 import Data from '../db/property';
 import PropertyModel from '../models/property.model';
@@ -6,14 +8,28 @@ import PropertyModel from '../models/property.model';
 class PropertyController {
   static async create(req, res) {
     try {
+      const createQuery = `INSERT INTO
+        property (owner, status, price, state, city, address, type, created_on, image_url, owner_email, owner_phone_number)
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`;
       const property = req.body;
-      const newId = Id(Data);
-      property.id = newId;
-      property.owner = res.locals.user;
-      property.created_on = new Date();
-      const newProperty = new PropertyModel({ ...property });
-      newProperty.create();
-      return Response.handleSuccess(201, 'Successfully Created', newProperty.result, res);
+      let { type } = property;
+      const {
+        price, state, city, address, image_url,
+      } = property;
+      property.owner = res.locals.user.id;
+      property.status = 'available';
+      property.created_on = moment(new Date());
+      property.owner_email = res.locals.user.email;
+      property.owner_phone_number = res.locals.user.phone_number;
+      type = type.toLowerCase().trim();
+      const values = [
+        property.owner, property.status, price, state, city, address, type,
+        property.created_on, image_url, property.owner_email, property.owner_phone_number
+      ];
+      const { rows } = await db.query(createQuery, values);
+      const obj = rows[0];
+      property.id = obj.id;
+      return Response.handleSuccess(201, 'Successfully Created', { ...property }, res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
     }
@@ -21,9 +37,11 @@ class PropertyController {
 
   static async findAll(req, res) {
     try {
-      const listOfProperties = await PropertyModel.findAll();
-      if (listOfProperties) {
-        return Response.handleSuccess(200, 'Got all property adverts successfully', listOfProperties, res);
+      const selectQuery = 'SELECT * FROM property WHERE owner = $1';
+      const owner = res.locals.user.id;
+      const { rows, rowCount } = await db.query(selectQuery, [owner]);
+      if (rowCount !== 0) {
+        return Response.handleSuccess(200, 'Got all property adverts successfully', rows, res);
       }
       return Response.handleError(404, 'No property found', res);
     } catch (error) {
@@ -33,9 +51,14 @@ class PropertyController {
 
   static async findOne(req, res) {
     try {
-      const propertyId = parseInt(req.params.id, 10);
-      const property = new PropertyModel(propertyId);
-      if (await property.findOne()) return Response.handleSuccess(200, 'Got the specific property advert successfully', property.result, res);
+      const selectQuery = 'SELECT * FROM property WHERE id = $1 AND owner = $2';
+      const owner = res.locals.user.id;
+      const id = parseInt(req.params.property_id, 10);
+      const values = [id, owner];
+      const { rows, rowCount } = await db.query(selectQuery, values);
+      if (rowCount !== 0) {
+        return Response.handleSuccess(200, 'Got the specific property advert successfully', rows[0], res);
+      }
       return Response.handleError(404, 'Property not found', res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
@@ -44,9 +67,15 @@ class PropertyController {
 
   static async findByType(req, res) {
     try {
-      const { type } = req.query;
-      const property = new PropertyModel(type);
-      if (await property.findByType()) return Response.handleSuccess(200, 'Got the property type successfully', property.result, res);
+      const selectQuery = 'SELECT * FROM property WHERE type = $1 AND owner = $2';
+      const owner = res.locals.user.id;
+      let { type } = req.query;
+      type = type.toLowerCase().trim();
+      const values = [type, owner];
+      const { rows, rowCount } = await db.query(selectQuery, values);
+      if (rowCount !== 0) {
+        return Response.handleSuccess(200, 'Got the property type successfully', rows, res);
+      }
       return Response.handleError(404, 'Property type not found, check the property type query value', res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
@@ -55,12 +84,30 @@ class PropertyController {
 
   static async update(req, res) {
     try {
-      const propertyId = parseInt(req.params.id, 10);
-      const newProperty = req.body;
-      newProperty.id = propertyId;
-      const property = new PropertyModel({ ...newProperty });
-      await property.updateProperty();
-      return Response.handleSuccess(200, 'Updated Successfully', property.result, res);
+      const findOneQuery = 'SELECT * FROM property WHERE id = $1 AND owner = $2';
+      const updateQuery = `UPDATE property 
+        SET price = $1, state = $2, city = $3, address = $4, type = $5, image_url = $6
+        WHERE id = $7 AND owner = $8 RETURNING *`;
+      const owner = res.locals.user.id;
+      const id = parseInt(req.params.property_id, 10);
+      let values = [id, owner];
+      const { rows, rowCount } = await db.query(findOneQuery, values);
+      if (rowCount === 0) {
+        return Response.handleError(404, 'Property not found', res);
+      }
+      const property = req.body;
+      values = [
+        property.price || rows[0].price,
+        property.state || rows[0].state,
+        property.city || rows[0].city,
+        property.address || rows[0].address,
+        property.type || rows[0].type,
+        property.image_url || rows[0].image_url,
+        rows[0].id,
+        rows[0].owner
+      ];
+      const response = await db.query(updateQuery, values);
+      return Response.handleSuccess(200, 'Updated Successfully', response.rows[0], res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
     }
@@ -68,11 +115,18 @@ class PropertyController {
 
   static async markSold(req, res) {
     try {
-      const id = parseInt(req.params.id, 10);
-      const soldProperty = { status: 'sold' };
-      const property = new PropertyModel({ id, ...soldProperty });
-      await property.updateProperty();
-      return Response.handleSuccess(200, 'Mark as sold successfully', property.result, res);
+      const updateOneQuery = `UPDATE property 
+        SET status = $1
+        WHERE id = $2 AND owner = $3 RETURNING *`;
+      const id = parseInt(req.params.property_id, 10);
+      const owner = res.locals.user.id;
+      const status = 'sold';
+      const values = [status, id, owner];
+      const { rows, rowCount } = await db.query(updateOneQuery, values);
+      if (rowCount === 0) {
+        return Response.handleError(404, 'Property not found', res);
+      }
+      return Response.handleSuccess(200, 'Mark as sold successfully', rows, res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
     }
@@ -80,9 +134,18 @@ class PropertyController {
 
   static async delete(req, res) {
     try {
-      const propertyId = parseInt(req.params.id, 10);
-      const property = new PropertyModel(propertyId);
-      if (await property.deleteProperty()) return Response.handleDelete(200, property.result, res);
+      const deleteQuery = `DELETE FROM property WHERE id = $1 AND owner = $2
+                            RETURNING *`;
+      const is_admin = res.locals.user.is_admin;
+      const owner = res.locals.user.id;
+      if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
+      const id = parseInt(req.params.property_id, 10);
+      const values = [id, owner];
+      const { rowCount } = await db.query(deleteQuery, values);
+      const result = { message: 'Deleted successfully' };
+      if (rowCount !== 0) {
+        return Response.handleDelete(200, result, res);
+      }
       return Response.handleError(404, 'Property id not found', res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
