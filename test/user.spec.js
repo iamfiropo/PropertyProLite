@@ -1,5 +1,6 @@
 import chaiHttp from 'chai-http';
 import chai, { expect } from 'chai';
+import faker from 'faker';
 import { config } from 'dotenv';
 import server from '../server';
 
@@ -15,7 +16,7 @@ describe('Testing signup controller', () => {
         .request(server)
         .post(signupUrl)
         .send({
-          email: 'john@test.com',
+          email: faker.internet.email(),
           first_name: 'patrick',
           last_name: 'olorunfunmi',
           password: 'password1',
@@ -37,7 +38,6 @@ describe('Testing signup controller', () => {
           expect(response.body.data).to.have.property('phone_number');
           expect(response.body.data).to.have.property('address');
           expect(response.body.data.token).to.be.a('string');
-          expect(response.body.data.email).to.equal('john@test.com');
           expect(response.body.message).to.equal('Successfully Created');
           done();
         });

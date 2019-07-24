@@ -93,6 +93,8 @@ describe('#Property features: ', () => {
             state: 'lagos',
             city: 'oworonshoki',
             address: '2, ladipo street',
+            type: 'bungalow',
+            image_url: 'https://pixabay.com/photos/portrait-woman-lady-coffee-bar-4246954/'
           })
           .set('Authorization', `Bearer ${token}`)
           .end((error, response) => {

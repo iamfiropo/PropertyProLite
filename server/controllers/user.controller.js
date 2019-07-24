@@ -10,8 +10,6 @@ class userController {
       const newUser = req.body;
       const hashedPassword = bcrypt.hashSync(newUser.password, bcrypt.genSaltSync(10), null);
       newUser.password = hashedPassword;
-      // const newId = Id(Users);
-      // newUser.id = newId;
       const user = new UserModel({ ...newUser });
       if (!await user.signUp()) {
         return Response.handleError(409, 'Email already exist', res);
@@ -24,7 +22,6 @@ class userController {
 
   static async signIn(req, res) {
     try {
-      // res.locals.user = req.user;
       const { email, password } = req.body;
       const signInUser = new UserModel(email);
       if (await signInUser.signIn()) {

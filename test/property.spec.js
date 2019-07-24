@@ -43,7 +43,7 @@ describe('#Property features: ', () => {
 
   describe('Testing delete a specific property advert controller', () => {
     const propertyUrl = '/api/v1/property/1';
-    const propertyUrlN = '/api/v1/property/11111111111111111111111';
+    const propertyUrlN = '/api/v1/property/111111';
     it('should delete a specific property advert successfully',
       (done) => {
         chai
@@ -51,6 +51,7 @@ describe('#Property features: ', () => {
           .delete(propertyUrl)
           .set('Authorization', `Bearer ${token}`)
           .end((error, response) => {
+            console.log('******update********', response.error);
             expect(response.body).to.be.an('object');
             expect(response.body.status).to.equal(200);
             expect(response.body.data).to.be.a('object');

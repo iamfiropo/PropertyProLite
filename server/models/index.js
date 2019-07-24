@@ -21,6 +21,7 @@ export default {
           resolve(res);
         })
         .catch((error) => {
+          console.log('***********delete***********', error);
           reject(error);
         });
     });

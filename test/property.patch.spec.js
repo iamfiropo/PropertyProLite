@@ -1,5 +1,6 @@
 import chaiHttp from 'chai-http';
 import chai, { expect } from 'chai';
+import faker from 'faker';
 import { config } from 'dotenv';
 import server from '../server';
 
@@ -48,14 +49,18 @@ describe('#Property features: ', () => {
         chai
           .request(server)
           .patch(propertyUrl)
+          .set('Authorization', `Bearer ${token}`)
           .send({
+            // owner_email: 'oluwa@gmail.com',
             price: 22500.55,
             state: 'lagos',
             city: 'oworonshoki',
             address: '2, ladipo street',
+            type: 'bungalow',
+            image_url: 'https://pixabay.com/photos/portrait-woman-lady-coffee-bar-4246954/',
           })
-          .set('Authorization', `Bearer ${token}`)
           .end((error, response) => {
+            // console.log('******update********', response.body);
             expect(response.body).to.be.an('object');
             expect(response.body.status).to.equal(200);
             expect(response.body.message).to.be.a('string');
@@ -151,13 +156,14 @@ describe('#Property features: ', () => {
 
   describe('Testing update property advert data', () => {
     const propertyUrl = '/api/v1/property/1/sold';
-    it('should get the updated property data successfully',
+    it('should get the property status updated to sold successfully',
       (done) => {
         chai
           .request(server)
           .patch(propertyUrl)
           .set('Authorization', `Bearer ${token}`)
           .end((error, response) => {
+            // console.log('******update********', response.body);
             expect(response.body).to.be.an('object');
             expect(response.body.status).to.equal(200);
             expect(response.body.message).to.be.a('string');

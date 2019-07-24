@@ -61,7 +61,7 @@ describe('#Property features: ', () => {
 
   describe('Testing get a specific property advert controller', () => {
     const propertyUrl = '/api/v1/property/1';
-    const propertyUrlN = '/api/v1/property/11111111111111111111111';
+    const propertyUrlN = '/api/v1/property/11111';
     it('should get a specific property advert successfully',
       (done) => {
         chai
