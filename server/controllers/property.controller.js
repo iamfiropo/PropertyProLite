@@ -1,9 +1,6 @@
 import moment from 'moment';
 import Response from '../utils/helpers/response';
 import db from '../models/index';
-import Id from '../utils/helpers/id';
-import Data from '../db/property';
-import PropertyModel from '../models/property.model';
 
 class PropertyController {
   static async create(req, res) {
@@ -51,6 +48,7 @@ class PropertyController {
 
   static async findOne(req, res) {
     try {
+      console.log('*******res.body*********', res.body);
       const selectQuery = 'SELECT * FROM property WHERE id = $1 AND owner = $2';
       const owner = res.locals.user.id;
       const id = parseInt(req.params.property_id, 10);
@@ -76,7 +74,7 @@ class PropertyController {
       if (rowCount !== 0) {
         return Response.handleSuccess(200, 'Got the property type successfully', rows, res);
       }
-      return Response.handleError(404, 'Property type not found, check the property type query value', res);
+      return Response.handleError(404, 'Property type not found. Check the property type query value', res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
     }
@@ -133,18 +131,22 @@ class PropertyController {
   }
 
   static async delete(req, res) {
+    /**
+     * Use like success response message
+     * Response.handleError(200, result, res)
+     */
     try {
       const deleteQuery = `DELETE FROM property WHERE id = $1 AND owner = $2
                             RETURNING *`;
       const is_admin = res.locals.user.is_admin;
       const owner = res.locals.user.id;
-      if (!is_admin) return Response.handleError(403, '!!!You do not have access to this endpoint', res);
+      if (!is_admin) return Response.handleError(403, 'You do not have access to this endpoint!!!', res);
       const id = parseInt(req.params.property_id, 10);
       const values = [id, owner];
       const { rowCount } = await db.query(deleteQuery, values);
       const result = { message: 'Deleted successfully' };
       if (rowCount !== 0) {
-        return Response.handleDelete(200, result, res);
+        return Response.handleError(200, result, res);
       }
       return Response.handleError(404, 'Property id not found', res);
     } catch (error) {

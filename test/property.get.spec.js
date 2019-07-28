@@ -57,10 +57,24 @@ describe('#Property features: ', () => {
             done();
           });
       });
+
+    it('Should require token authentication',
+      (done) => {
+        chai
+          .request(server)
+          .get(propertyUrl)
+          .end((error, response) => {
+            expect(response.body).to.be.an('object');
+            expect(response).to.have.status(403);
+            expect(response.body.status).to.equal(403);
+            expect(response.body.error).to.equal('Token required. Please sign in or register as a user');
+            done();
+          });
+      });
   });
 
   describe('Testing get a specific property advert controller', () => {
-    const propertyUrl = '/api/v1/property/1';
+    const propertyUrl = '/api/v1/property/5';
     const propertyUrlN = '/api/v1/property/11111';
     it('should get a specific property advert successfully',
       (done) => {

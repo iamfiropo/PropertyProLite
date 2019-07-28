@@ -43,7 +43,7 @@ describe('#Property features: ', () => {
     });
 
   describe('Testing update property advert data', () => {
-    const propertyUrl = '/api/v1/property/1';
+    const propertyUrl = '/api/v1/property/5';
     it('should get the updated property data successfully',
       (done) => {
         chai
@@ -51,16 +51,14 @@ describe('#Property features: ', () => {
           .patch(propertyUrl)
           .set('Authorization', `Bearer ${token}`)
           .send({
-            // owner_email: 'oluwa@gmail.com',
             price: 22500.55,
-            state: 'lagos',
-            city: 'oworonshoki',
-            address: '2, ladipo street',
-            type: 'bungalow',
+            state: 'abuja',
+            city: 'oworo',
+            address: '2, ladipo str',
+            type: 'duplex',
             image_url: 'https://pixabay.com/photos/portrait-woman-lady-coffee-bar-4246954/',
           })
           .end((error, response) => {
-            // console.log('******update********', response.body);
             expect(response.body).to.be.an('object');
             expect(response.body.status).to.equal(200);
             expect(response.body.message).to.be.a('string');
@@ -155,7 +153,7 @@ describe('#Property features: ', () => {
   });
 
   describe('Testing update property advert data', () => {
-    const propertyUrl = '/api/v1/property/1/sold';
+    const propertyUrl = '/api/v1/property/5/sold';
     it('should get the property status updated to sold successfully',
       (done) => {
         chai
@@ -163,7 +161,6 @@ describe('#Property features: ', () => {
           .patch(propertyUrl)
           .set('Authorization', `Bearer ${token}`)
           .end((error, response) => {
-            // console.log('******update********', response.body);
             expect(response.body).to.be.an('object');
             expect(response.body.status).to.equal(200);
             expect(response.body.message).to.be.a('string');

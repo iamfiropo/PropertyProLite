@@ -64,10 +64,17 @@ etc
 
  > [Repository](https://github.com/Johnpeace/PropertyProLite)
 
- > [API Documentation]()
+ > [Swagger API Docs](https://propertyprolite.herokuapp.com/api/v1/api-docs)
 
- > Project References
+ ## Project References
  * [Dave Sag](https://itnext.io/wiring-up-an-api-server-with-express-and-swagger-9bffe0a0d6bd)
+ * [Swagger Documentation](https://swagger.io/)
+ * [Mocha](https://mochajs.org/)
+ * [ESLint](https://eslint.org/)
+ * [node-postgres](http://node-postgres.com)
+ * [Airbnb](https://github.com/airbnb/javascript)
+ * [Cloudinary](https://cloudinary.com)
+ * [Heroku](https://heroku.com/)
 
 
 ## Author

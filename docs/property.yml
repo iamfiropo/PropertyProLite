@@ -1,0 +1,222 @@
+paths:
+  /api/v1/property:
+    post:                  
+      tags:              
+        - Property       
+      summary: Create a property advert
+      security:
+        - bearerAuth: []
+      produces:
+      - application/json    
+      parameters:        
+      - in: body         
+        name: property 
+        description: It enables a user to create a property
+        schema:
+          $ref: '#/definitions/property'
+      responses:
+        201:
+          description: Successfully created
+        400:
+          description: Please fill all the required fields
+        403:
+          description: Token required. Please sign in or register as a user
+        500:
+          description: Internal server error
+    get:                  
+      tags:              
+        - Property       
+      summary: Get all properties 
+      security:
+        - bearerAuth: []
+      produces:
+      - application/json  
+      responses:
+        200:
+          description: Got all property adverts successfully
+        403:
+          description: Token required. Please sign in or register as a user
+        404:
+          description: No property found
+        500:
+          description: Internal server error
+
+  /api/v1/property/{property_id}:
+    get:                  
+      tags:              
+        - Property       
+      summary: View a specific property advert
+      security:
+        - bearerAuth: []
+      produces:
+      - application/json    
+      parameters:        
+      - in: path         
+        name: property_id
+        schema:
+          type: integer
+        required: true
+        description: It enables a user to view a specific property advert
+      responses:
+        200:
+          description: Got the specific property advert successfully
+        403:
+          description: Token required. Please sign in or register as a user
+        404:
+          description: No property found
+        500:
+          description: Internal server error
+
+    patch:                  
+      tags:              
+        - Property       
+      summary: Update property data
+      security:
+        - bearerAuth: []
+      produces:
+      - application/json    
+      parameters:        
+      - in: path         
+        name: property_id
+        schema:
+          type: integer
+        required: true
+        description: property advert to modify        
+      - in: body         
+        name: property 
+        description: fields to update
+        schema:
+          $ref: '#/definitions/property'
+      responses:
+        200:
+          description: Updated Successfully
+        403:
+          description: Token required. Please sign in or register as a user
+        404:
+          description: Property not found
+        500:
+          description: Internal server error
+
+    delete:                  
+      tags:              
+        - Property       
+      summary: Delete a property advert
+      security:
+        - bearerAuth: []
+      produces:
+      - application/json    
+      parameters:        
+      - in: path         
+        name: property_id
+        schema:
+          type: integer
+        required: true
+        description: property advert to delete
+      responses:
+        200:
+          description: Deleted Successfully
+        403:
+          description: Token required. Please sign in or register as a user
+        404:
+          description: Property id not found
+        500:
+          description: Internal server error
+
+  /api/v1/properties:
+    get:                  
+      tags:              
+        - Property       
+      summary: Get all property advertisement offering a specific type of property
+      security:
+        - bearerAuth: []
+      produces:
+      - application/json    
+      parameters:        
+      - in: query         
+        name: type
+        schema:
+          type: string
+        required: true
+        description: The number of specific type of property to return
+      responses:
+        200:
+          description: Got the property type successfully
+        400:
+          description: No valid query detected e.g properties?type=duplex
+        403:
+          description: Token required. Please sign in or register as a user
+        404:
+          description: Property type not found. Check the property type query value
+        500:
+          description: Internal server error
+
+  /api/v1/property/{property_id}/sold:
+    patch:                  
+      tags:              
+        - Property       
+      summary: Mark a property as sold so users know it’s no longer available
+      security:
+        - bearerAuth: []
+      produces:
+      - application/json    
+      parameters:        
+      - in: path         
+        name: property_id
+        schema:
+          type: integer
+        required: true
+        description: property advert to modify        
+      - in: body         
+        name: property status
+        description: change status to sold
+        schema:
+          $ref: '#/definitions/propertyStatus'
+      responses:
+        200:
+          description: Mark as sold successfully
+        403:
+          description: Token required. Please sign in or register as a user
+        404:
+          description: Property not found
+        500:
+          description: Internal server error
+
+definitions:
+  property:
+    type: object
+    required:
+      - price
+      - state
+      - city
+      - address
+      - type
+      - image_url
+    properties:
+      price:
+        type: real
+        example: 24567.00
+      state:
+        type: string
+        example: Lagos
+      city:
+        type: string
+        example: Oworo
+      address:
+        type: string
+        example: 2, kokumo
+      type:
+        type: string
+        example: duplex
+      image_url:
+        type: string
+        example: https://pixabay.com/photos/portrait-woman-lady-coffee-bar-4246954/ 
+
+  propertyStatus:
+    type: object
+    required:
+      - status
+    properties:
+      status:
+        type: string
+        example: sold
+        readOnly: true

@@ -42,19 +42,18 @@ describe('#Property features: ', () => {
     });
 
   describe('Testing delete a specific property advert controller', () => {
-    const propertyUrl = '/api/v1/property/1';
+    const propertyUrl = '/api/v1/property/4';
     const propertyUrlN = '/api/v1/property/111111';
-    it('should delete a specific property advert successfully',
+    it('should return an error if the token supplied is invalid',
       (done) => {
         chai
           .request(server)
           .delete(propertyUrl)
-          .set('Authorization', `Bearer ${token}`)
+          .set('Authorization', `Bearer ${wrongToken}`)
           .end((error, response) => {
-            console.log('******update********', response.error);
             expect(response.body).to.be.an('object');
-            expect(response.body.status).to.equal(200);
-            expect(response.body.data).to.be.a('object');
+            expect(response).to.have.status(401);
+            expect(response.body.status).to.equal(401);
             done();
           });
       });

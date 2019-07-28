@@ -1,5 +1,4 @@
 import Model from './model';
-import Users from '../db/users';
 import Response from '../utils/helpers/response';
 import Token from '../config/jwt';
 import db from './index';

@@ -1,7 +1,5 @@
 import bcrypt from 'bcrypt';
 import Response from '../utils/helpers/response';
-import Id from '../utils/helpers/id';
-import Users from '../db/users';
 import UserModel from '../models/user.model';
 
 class userController {
@@ -30,7 +28,7 @@ class userController {
         }
         return Response.handleError(401, 'Wrong password. Please try again', res);
       }
-      return Response.handleError(404, 'Sorry, we do not recognize this email', res);
+      return Response.handleError(404, 'Sorry!!! We do not recognize this email', res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
     }
