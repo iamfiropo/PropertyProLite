@@ -13,13 +13,6 @@ class Response {
       data,
     });
   }
-
-  static handleDelete(statusCode, data, res) {
-    res.status(statusCode).json({
-      status: statusCode,
-      data,
-    });
-  }
 }
 
 export default Response;

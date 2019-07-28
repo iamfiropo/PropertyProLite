@@ -58,7 +58,7 @@ describe('#Property features: ', () => {
             expect(response.body).to.be.an('object');
             expect(response).to.have.status(403);
             expect(response.body.status).to.equal(403);
-            expect(response.body.error).to.equal('Token required, please sign in or register as a user');
+            expect(response.body.error).to.equal('Token required. Please sign in or register as a user');
             done();
           });
       });

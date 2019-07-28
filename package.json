@@ -31,7 +31,10 @@
     "moment": "^2.24.0",
     "pg": "^7.11.0",
     "regenerator-runtime": "^0.13.2",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "swagger-express-router": "^1.0.0",
+    "swagger-jsdoc": "^3.3.0",
+    "swagger-ui-express": "^4.0.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

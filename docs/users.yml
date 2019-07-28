@@ -1,0 +1,97 @@
+paths:
+  /api/v1/auth/signup:
+    post:                  
+      tags:              
+        - User       
+      summary: creates a new user
+      produces:
+      - application/json
+      parameters:        
+      - in: body         
+        name: sign up 
+        description: It enables a user to create an account
+        required: false
+        schema:
+          $ref: '#/definitions/signUp' 
+      responses:
+        201:
+          description: Successfully created
+        400:
+          description: Please fill all the required fields
+        409:
+          description: Email already exist
+        500:
+          description: Internal server error
+
+  /api/v1/auth/signin:
+    post:                  
+      tags:              
+        - User       
+      summary: sign in a user
+      produces:
+      - application/json
+      parameters:        
+      - in: body         
+        name: sign in 
+        description: It enables a user to sign in
+        required: false
+        schema:
+          $ref: '#/definitions/signIn' 
+      responses:
+        200:
+          description: User sign in successfully
+        400:
+          description: Enter valid password
+        401:
+          description: Wrong password. Please try again
+        404:
+          description: Sorry!!! We do not recognize this email
+        500:
+          description: Internal server error
+
+definitions:
+  signUp:
+    type: object
+    required:
+      - email
+      - first_name
+      - last_name
+      - password
+      - phone_number
+      - address
+      - is_admin
+    properties:
+      email:
+        type: string
+        example: test@test.com
+      first_name:
+        type: string
+        example: Ropo
+      last_name:
+        type: string
+        example: Olatujoye
+      password:
+        type: string
+        example: password1
+      phone_number:
+        type: integer
+        example: 08089876543
+      address:
+        type: string
+        example: 2, ologo street
+      is_admin:
+        type: boolean
+        example: true
+
+  signIn:
+    type: object
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+        example: test@test.com
+      password:
+        type: string
+        example: password1

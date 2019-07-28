@@ -439,20 +439,20 @@ describe('Testing signin controller', () => {
       });
   });
 
-  // it('should not signin if the email does not exist', (done) => {
-  //   chai
-  //     .request(server)
-  //     .post(signinUrl)
-  //     .send({
-  //       email: 'testqq@test.com',
-  //       password: 'password133',
-  //     })
-  //     .end((error, response) => {
-  //       expect(response.body).to.be.a('object');
-  //       expect(response.body.status).to.equal(404);
-  //       expect(response.body.error).to.be.a('string');
-  //       expect(response.body.error).to.equal('Sorry, we do not recognize this email');
-  //       done();
-  //     });
-  // });
+  it('should not signin if the email does not exist', (done) => {
+    chai
+      .request(server)
+      .post(signinUrl)
+      .send({
+        email: 'testqq@test.com',
+        password: 'password133',
+      })
+      .end((error, response) => {
+        expect(response.body).to.be.a('object');
+        expect(response.body.status).to.equal(404);
+        expect(response.body.error).to.be.a('string');
+        expect(response.body.error).to.equal('Sorry!!! We do not recognize this email');
+        done();
+      });
+  });
 });

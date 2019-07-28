@@ -3,9 +3,12 @@ import logger from 'morgan';
 import Debug from 'debug';
 import cors from 'cors';
 import { config } from 'dotenv';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUI from 'swagger-ui-express';
 import 'regenerator-runtime/runtime';
 import './server/config/cloudinary';
 import Route from './server/routes/route';
+import options from './docs/swagger';
 
 config();
 
@@ -28,6 +31,9 @@ app.get('/api/v1', (req, res) => {
 
 const router = express.Router();
 app.use('/api/v1', Route(logger, router));
+
+const swaggerSpec = swaggerJSDoc(options);
+app.use('/api/v1/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.use((req, res) => {
   res.status(404).json({
