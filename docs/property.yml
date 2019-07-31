@@ -7,13 +7,32 @@ paths:
       security:
         - bearerAuth: []
       produces:
-      - application/json    
-      parameters:        
-      - in: body         
-        name: property 
-        description: It enables a user to create a property
-        schema:
-          $ref: '#/definitions/property'
+      - multipart/form-data    
+      parameters:      
+        - in: formData         
+          name: price 
+          type: float
+          description: Property price       
+        - in: formData         
+          name: state 
+          type: string
+          description: Property state       
+        - in: formData         
+          name: city 
+          type: string
+          description: Property city       
+        - in: formData         
+          name: address 
+          type: string
+          description: Property address       
+        - in: formData         
+          name: type 
+          type: string
+          description: Property type        
+        - in: formData         
+          name: photo 
+          type: file
+          description: Property image
       responses:
         201:
           description: Successfully created
@@ -74,19 +93,39 @@ paths:
       security:
         - bearerAuth: []
       produces:
-      - application/json    
+      - multipart/form-data    
       parameters:        
       - in: path         
         name: property_id
         schema:
           type: integer
         required: true
-        description: property advert to modify        
-      - in: body         
-        name: property 
-        description: fields to update
-        schema:
-          $ref: '#/definitions/property'
+        description: property advert to modify    
+      - in: formData         
+        name: price 
+        required: true
+        type: float
+        description: Property price       
+      - in: formData         
+        name: state 
+        type: string
+        description: Property state       
+      - in: formData         
+        name: city 
+        type: string
+        description: Property city       
+      - in: formData         
+        name: address 
+        type: string
+        description: Property address       
+      - in: formData         
+        name: type 
+        type: string
+        description: Property type        
+      - in: formData         
+        name: photo 
+        type: file
+        description: Property image
       responses:
         200:
           description: Updated Successfully
@@ -182,35 +221,6 @@ paths:
           description: Internal server error
 
 definitions:
-  property:
-    type: object
-    required:
-      - price
-      - state
-      - city
-      - address
-      - type
-      - image_url
-    properties:
-      price:
-        type: real
-        example: 24567.00
-      state:
-        type: string
-        example: Lagos
-      city:
-        type: string
-        example: Oworo
-      address:
-        type: string
-        example: 2, kokumo
-      type:
-        type: string
-        example: duplex
-      image_url:
-        type: string
-        example: https://pixabay.com/photos/portrait-woman-lady-coffee-bar-4246954/ 
-
   propertyStatus:
     type: object
     required:

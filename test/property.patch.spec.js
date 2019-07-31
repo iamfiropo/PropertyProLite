@@ -43,7 +43,7 @@ describe('#Property features: ', () => {
     });
 
   describe('Testing update property advert data', () => {
-    const propertyUrl = '/api/v1/property/5';
+    const propertyUrl = '/api/v1/property/1';
     it('should get the updated property data successfully',
       (done) => {
         chai
@@ -153,7 +153,7 @@ describe('#Property features: ', () => {
   });
 
   describe('Testing update property advert data', () => {
-    const propertyUrl = '/api/v1/property/5/sold';
+    const propertyUrl = '/api/v1/property/1/sold';
     it('should get the property status updated to sold successfully',
       (done) => {
         chai

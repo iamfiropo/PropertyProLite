@@ -3,7 +3,7 @@ const options = {
     swagger: '2.0',
     info: {
       title: 'PropertyProLite API',
-      version: '2.0.0',
+      version: '1.0.0',
       description: 'API docs for PropertyProLite Application'
     },
     securityDefinitions: {
@@ -13,7 +13,7 @@ const options = {
         type: 'apiKey',
       },
     },
-    schemes: ['http'],
+    schemes: ['https', 'http'],
   },
   apis: ['./docs/*.yml'],
 };

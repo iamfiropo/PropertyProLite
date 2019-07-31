@@ -3,6 +3,7 @@ import logger from 'morgan';
 import Debug from 'debug';
 import cors from 'cors';
 import { config } from 'dotenv';
+import fileUpload from 'express-fileupload';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
 import 'regenerator-runtime/runtime';
@@ -20,7 +21,13 @@ const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+
+app.use(fileUpload({
+  useTempFiles: true,
+  safeFileNames: true,
+  preserveExtension: true
+}));
 
 app.get('/api/v1', (req, res) => {
   res.status(200).json({
