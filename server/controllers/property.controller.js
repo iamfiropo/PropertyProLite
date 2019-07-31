@@ -1,6 +1,7 @@
 import moment from 'moment';
 import Response from '../utils/helpers/response';
 import db from '../models/index';
+import Upload from '../config/cloudinary';
 
 class PropertyController {
   static async create(req, res) {
@@ -11,8 +12,9 @@ class PropertyController {
       const property = req.body;
       let { type } = property;
       const {
-        price, state, city, address, image_url,
+        price, state, city, address,
       } = property;
+      property.image_url = await Upload.uploadFile(req);
       property.owner = res.locals.user.id;
       property.status = 'available';
       property.created_on = moment(new Date());
@@ -21,12 +23,10 @@ class PropertyController {
       type = type.toLowerCase().trim();
       const values = [
         property.owner, property.status, price, state, city, address, type,
-        property.created_on, image_url, property.owner_email, property.owner_phone_number
+        property.created_on, property.image_url, property.owner_email, property.owner_phone_number
       ];
       const { rows } = await db.query(createQuery, values);
-      const obj = rows[0];
-      property.id = obj.id;
-      return Response.handleSuccess(201, 'Successfully Created', { ...property }, res);
+      return Response.handleSuccess(201, 'Successfully Created', rows[0], res);
     } catch (error) {
       return Response.handleError(500, error.toString(), res);
     }
@@ -48,7 +48,6 @@ class PropertyController {
 
   static async findOne(req, res) {
     try {
-      console.log('*******res.body*********', res.body);
       const selectQuery = 'SELECT * FROM property WHERE id = $1 AND owner = $2';
       const owner = res.locals.user.id;
       const id = parseInt(req.params.property_id, 10);
@@ -94,6 +93,7 @@ class PropertyController {
         return Response.handleError(404, 'Property not found', res);
       }
       const property = req.body;
+      property.image_url = await Upload.uploadFile(req);
       values = [
         property.price || rows[0].price,
         property.state || rows[0].state,

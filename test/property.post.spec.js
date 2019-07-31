@@ -111,6 +111,32 @@ describe('#Property features: ', () => {
           });
       });
 
+    it('should upload image successfully when a file is attached',
+      (done) => {
+        chai
+          .request(server)
+          .post(propertyUrl)
+          .field({
+            price: 22500.55,
+            state: 'lagos',
+            city: 'oworonshoki',
+            address: '2, ladipo street',
+            type: 'bungalow',
+          })
+          .attach('photo', './server/mockdata/test/test.jpeg')
+          .set('Authorization', `Bearer ${token}`)
+          .end((error, response) => {
+            const photo = response.body.data;
+            expect(response.body).to.be.an('object');
+            expect(response).to.have.status(201);
+            expect(response.body.status).to.equal(201);
+            expect(response.body.data).to.be.a('object');
+            expect(response.body.data).to.have.property('image_url');
+            expect(response.body.message).to.equal('Successfully Created');
+            done();
+          });
+      });
+
     it('should not create property advert when the price is missing',
       (done) => {
         chai

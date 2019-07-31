@@ -6,7 +6,7 @@
   "scripts": {
     "heroku-postbuild": "npm install --production",
     "test": "NODE_ENV=TEST nyc mocha --require @babel/register ./test/*.spec.js --timeout 40000 --exit || true",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "start": "DEBUG=http babel-node server.js",
     "dev": "DEBUG=http nodemon --exec babel-node server.js"
   },
@@ -26,6 +26,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.1.5",
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
