@@ -7,12 +7,14 @@ env:
   global:
     - CC_TEST_REPORTER_ID=01002f0e042c2d017dcc9ac9c6155276625b47fc38d2bd9f5f5ce1c49d3603eb
 before_script:
+  - npm install
+  - npm install nyc -g
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
   - babel-node server.js &
-  - npm run test
+  - npm run test &
   - psql -c 'create database propertyprolitedb;' -U postgres
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
