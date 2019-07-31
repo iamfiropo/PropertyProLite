@@ -11,7 +11,7 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - babel-node server.js
+  - babel-node server.js &
   - npm run test
   - psql -c 'create database propertyprolitedb;' -U postgres
 after_script:
