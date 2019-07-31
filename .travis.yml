@@ -14,11 +14,13 @@ script:
   - psql -c 'create database propertyprolitedb;' -U postgres &
   - babel-node server.js &
   - npm run test
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
 notifications:
   email: false
 cache:
   directories:
     - "node_modules"
 after_success: 
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
   - npm run coverage
