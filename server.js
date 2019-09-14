@@ -20,8 +20,9 @@ const debug = Debug('http');
 const port = process.env.PORT;
 
 app.use(cors());
+app.use(multer({dest:'./public/uploads/'}).single('file'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 app.use(fileUpload({
   useTempFiles: true,
